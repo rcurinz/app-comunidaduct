@@ -1,0 +1,27 @@
+<!--https://codepen.io/mazenelkadi/pen/MWOQGxW-->
+
+<div id="contenedor"class="container">
+  <div class="elemento">
+    <div class="columns">
+      <div class="column div-logo centrar" style="margin-top: 5%;">
+        <img class="img-logo" src="../assets/logo-negro.png">
+      </div>
+    </div>
+    <div class="elementos-uct">
+      <a *ngFor="let item of nombres" href="{{item['link']}}" target="_blank">
+        <div class="columns is-mobile elemento-link"  style="margin-bottom: 30px;">
+          <div class="column set-padding" style="display: flex; justify-content: end; ">
+              <img width="30px" height="30px" src="../assets/{{item['imagen']}}" alt="">
+          </div>
+          <div class="column centrar-left is-three-fifths-mobile ajuste-texto set-padding" style="padding-left: 0;">
+            <p>{{item['nombre']}}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <br>
+  </div>
+</div>
+
+
+
