@@ -5,7 +5,7 @@ import { RedesComponent } from './components/redes/redes.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: RedesComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'redes', component: RedesComponent },
 
