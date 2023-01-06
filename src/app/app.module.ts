@@ -7,19 +7,27 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HomeComponent } from './components/home/home.component';
 import { RedesComponent } from './components/redes/redes.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PostulacionComponent } from './components/postulacion/postulacion.component';
+
+//primeNG
+import {CheckboxModule} from 'primeng/checkbox';
+import {SelectButtonModule} from 'primeng/selectbutton';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RedesComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PostulacionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CheckboxModule,
+    SelectButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

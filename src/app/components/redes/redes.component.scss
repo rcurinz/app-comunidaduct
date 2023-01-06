@@ -9,10 +9,9 @@
 }*/
 
 
-//cargar fuente desde la carpeta fonts
 :host {
-    --bgColor: #223344;
-    --bgColor2: #090a0f;
+    --bgColor: rgb(187, 160, 27) ;// #223344;
+    --bgColor2:  rgb(208, 37, 7);// #090a0f;
     --accentColor: #FFF;
     --font: 'Karla', sans-serif;
     --delay: .3s;
@@ -77,8 +76,12 @@
     margin-bottom: 10px;
     padding: 10px; /* 17px */
     text-decoration: none;
+<<<<<<< HEAD
+    transition: all .25s cubic-bezier(.08, .59, .29, .99);
+=======
     transition: 0.9s;
     /* transition: all .25s cubic-bezier(.08, .59, .29, .99); */
+>>>>>>> main
     -webkit-tap-highlight-color: transparent;
 }
 
