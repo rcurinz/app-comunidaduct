@@ -33,7 +33,7 @@ export class RedesComponent implements OnInit {
       'clase':'fab fa-instagram'
     },
     {
-      'nombre':"UCT Lounge",
+      'nombre':"Discord UCT",
       'link':"https://discord.gg/DZxEH6ETP6",
       'imagen':'logo_dc_full.png',
       'clase':'fab fa-discord'
