@@ -12,6 +12,7 @@ import { PostulacionComponent } from './components/postulacion/postulacion.compo
 //primeNG
 import {CheckboxModule} from 'primeng/checkbox';
 import {SelectButtonModule} from 'primeng/selectbutton';
+import { ContadorComponent } from './components/contador/contador.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {SelectButtonModule} from 'primeng/selectbutton';
     HomeComponent,
     RedesComponent,
     PageNotFoundComponent,
-    PostulacionComponent
+    PostulacionComponent,
+    ContadorComponent
   ],
   imports: [
     BrowserModule,
