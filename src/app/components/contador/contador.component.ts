@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ManagerServiceService } from 'src/app/services/manager-service.service';
 
 @Component({
   selector: 'app-contador',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContadorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private manageApi: ManagerServiceService) { }
 
   ngOnInit(): void {
+    this.getService();
   }
+
+  getService(){
+    this.manageApi.getService().subscribe(
+      (data)=>{
+        console.log(data);
+      }
+  )};
 
 }
