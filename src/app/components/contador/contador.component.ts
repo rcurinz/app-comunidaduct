@@ -11,7 +11,7 @@ export class ContadorComponent implements OnInit {
   constructor(private manageApi: ManagerServiceService) { }
 
   ngOnInit(): void {
-    this.getService();
+    this.manageApi.getQuery();
   }
 
   getService(){

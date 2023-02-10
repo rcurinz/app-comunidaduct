@@ -1,0 +1,12 @@
+<div *ngIf="!winner">
+  <div class="ruleta">
+    <div *ngFor="let name of names" class="segment">
+      {{ name }}
+    </div>
+  </div>
+  <button (click)="spin()">Spin</button>
+</div>
+<div *ngIf="winner">
+  <h1>{{ winner }}</h1>
+  <button (click)="reset()">Reset</button>
+</div>

@@ -1,0 +1,135 @@
+
+.subtitle-minecarft{
+  color: #ffffff;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.head-titles a{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.head-titles{
+  background-color: rgb(38, 38, 38);
+}
+
+
+.background{
+  //diseño animando estilo mineacrft
+  background-color: #7f7f7f;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      #4c4c4c,
+      #4c4c4c 10px,
+      #ffffff 10px,
+      #ffffff 20px
+    ),
+    url(https://i.imgur.com/W6z8YYx.png);
+}
+
+.container-rules{
+  //fondo difuminado
+  background-color: rgba(0, 0, 0, 0.5);
+
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.title-mine{
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ol {
+  margin-left: 20px;
+}
+
+li{
+  //fondo difuminado
+  background-color: rgba(0, 0, 0, 0.503);
+  margin: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+.container-info{
+  //fondo difuminado
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.container-info li{
+  margin: 0;
+  border-radius: 0;
+  padding: 5px;
+}
+
+#contador{
+  background-color: rgb(38, 38, 38);
+  margin-bottom: 20px;
+  color: white
+}
+
+#contador .column{
+  text-align: center;
+  font-size: 45px;
+}
+
+#ip{
+  background-color: rgb(38, 38, 38);
+  margin-bottom: 20px;
+  color: white;
+  text-align: center;
+  font-size: 45px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  display: block;
+}
+
+#text-redes{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: white;
+  background-color: rgb(38, 38, 38);
+}
+
+#text-redes:hover{
+  background-color: #424242;
+  color: rgb(50, 231, 0);
+  //efecto de texto
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
+  //efecto de zoom
+  transform: scale(1.05);
+  transition: 0.5s;
+
+}
+
+.cont-player-info{
+  margin: 5px
+}
+
+.cont-img-player{
+  display: flex;
+  justify-content: center;
+}
+
+.cont-name-player{
+  display: flex;
+  justify-content: center;
+}
+
+.img-player{
+  margin: 5px
+}

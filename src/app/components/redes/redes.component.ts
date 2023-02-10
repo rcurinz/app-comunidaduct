@@ -34,7 +34,7 @@ export class RedesComponent implements OnInit {
     },
     {
       'nombre':"Discord UCT",
-      'link':"https://discord.gg/DZxEH6ETP6",
+      'link':"https://discord.gg/wQRavyyyQw",
       'imagen':'logo_dc_full.png',
       'clase':'fab fa-discord'
     },

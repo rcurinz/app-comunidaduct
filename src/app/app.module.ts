@@ -13,6 +13,11 @@ import { PostulacionComponent } from './components/postulacion/postulacion.compo
 import {CheckboxModule} from 'primeng/checkbox';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import { ContadorComponent } from './components/contador/contador.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SelectAdminsComponent } from './pages/select-admins/select-admins.component';
+import { MinecraftComponent } from './pages/minecraft/minecraft.component';
+import {CardModule} from 'primeng/card';
+import {DataViewModule} from 'primeng/dataview';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,10 @@ import { ContadorComponent } from './components/contador/contador.component';
     RedesComponent,
     PageNotFoundComponent,
     PostulacionComponent,
-    ContadorComponent
+    ContadorComponent,
+    SpinnerComponent,
+    SelectAdminsComponent,
+    MinecraftComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +38,8 @@ import { ContadorComponent } from './components/contador/contador.component';
     ReactiveFormsModule,
     CheckboxModule,
     SelectButtonModule,
+    CardModule,
+    DataViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]
