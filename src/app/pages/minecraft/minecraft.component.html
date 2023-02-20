@@ -86,24 +86,20 @@
     </div>
   </div>
   <br>
-  <div class="columns head-titles" >
+  <!--<div class="columns head-titles" >
     <div class="column subtitle-minecarft">
       Reglas del servidor
     </div>
-  </div>
-  <!--<div class="columns head-titles" >
-    <a>
-      <div class="column subtitle-minecarft">
-        Reglas del servidor
-      </div>
-    </a>
-    <a>
-      <div class="column subtitle-minecarft">
-        Comandos
-      </div>
-    </a>
   </div>-->
-  <div class="container-rules">
+  <div class="columns head-titles" >
+    <div class="column subtitle-minecarft" (click)="change_view('rules')">
+      Reglas del servidor
+    </div>
+    <div class="column subtitle-minecarft" (click)="change_view('comandos')">
+      Comandos
+    </div>
+  </div>
+  <div class="container-rules" *ngIf="rules">
     <div class="rules-chat">
       <div class="columns" style="margin-bottom: 0px;">
         <div class="column title-mine" style="margin-bottom: 0px;">
@@ -150,6 +146,23 @@
             <li style="background-color: rgba(255, 255, 0, 0.305);">Leve: {{faltas['Leve']}}</li>
             <li style="background-color:  rgba(255, 165, 0, 0.305)">Grave: {{faltas['Grave']}}</li>
             <li style="background-color: rgba(255, 0, 0, 0.305);">Gravísima: {{faltas['Gravísima']}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-rules" *ngIf="comandos">
+    <div class="rules-game">
+      <div class="columns" style="margin-bottom: 0px;">
+        <div class="column title-mine">
+          Comandos
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <!-- Generar  lista-->
+          <ul>
+            <li *ngFor="let item of comandos_list; let i = index"><strong style="color: #FFFFFF;">{{i+1}}. {{item.command}}</strong> <br> {{item.desc}}</li>
           </ul>
         </div>
       </div>

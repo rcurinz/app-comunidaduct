@@ -2,6 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "experimentalDecorators": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -10,10 +11,6 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
@@ -24,34 +21,14 @@
     ],
     "noImplicitAny": false,
     "strictNullChecks": false,
-    "useDefineForClassFields": false,
     "paths": {
-      "fs": [
-        "./node_modules/fs-extra/lib/index.js"
-      ],
-      "process": [
-        "./node_modules/process/browser.js"
-      ],
-      "crypto": [
-        "./node_modules/crypto-browserify/index.js"
-      ],
-      "url": [
-        "./node_modules/url/url.js"
-      ],
-      "stream": [
-        "./node_modules/stream-browserify/index.js"
-      ],
-      "timers": [
-        "./node_modules/timers-browserify/main.js"
-      ],
-      "zlib": [
-        "./node_modules/browserify-zlib/lib/index.js"
-      ],
-      "assert": [
-        "./node_modules/assert/assert.js"
-      ],
+      "@raw-data/*": [
+        "./src/raw-data/*"
+      ]
 
     },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {

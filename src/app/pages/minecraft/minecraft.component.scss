@@ -6,6 +6,15 @@
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
+  cursor: pointer;
+}
+
+.subtitle-minecarft:hover{
+  color: #ffffff;
+  //efecto de texto
+  //efecto de zoom
+  transform: scale(1.05);
+  transition: 0.5s;
 }
 
 .head-titles a{

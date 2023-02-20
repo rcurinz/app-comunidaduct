@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { ManagerServiceService } from 'src/app/services/manager-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import REGLAS from '@raw-data/reglas.json';
+import COMANDOS from '@raw-data/comandos.json';
 
 @Component({
   selector: 'app-minecraft',
@@ -10,38 +12,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class MinecraftComponent {
 
-  reglas_chat = [
-    "No insultes, denigres, ofendas y/o amenazas a otros usuarios",
-    "Respeta a todos",
-    "No hagas spam ni flood",
-    "No abuses de mayúsculas.",
-    "No promociones IPs externas de otros servidores, ni servidores de Discord o canales de Youtube/Twitch con información de otros servidores.",
-    "No alientes a los usuarios a romper las reglas.",
-    "No le faltes el respeto al staff.",
-    "Respeta las decisiones y sanciones que haga el staff.",
-    "Las reglas están sujetas al sentido común, el staff siempre tendrá la última palabra."
-  ];
+  reglas_chat = REGLAS['reglas-chat'];
 
-  reglas_juego = [
-    "No te aproveches de bugs",
-    "No uses hacks- modificaciones externas. (Utilizar Xray dentro del servidor es ilegal).",
-    "No encubras a alguien que esté incumpliendo las reglas, si lo haces obtendrás su misma sanción.",
-    "No te hagas pasar por miembro del staff.",
-    "No mientas o intentes sobornar al staff para retirar una sanción o conseguir algún beneficio.",
-    "En caso de presenciar algún bug, debes abrir un ticket a través del discord, para que un miembro del staff pueda atenderte (saca capturas de pantalla y ten claro todos los detalles).",
-    "El tpakill no está permitido, recuerda que es bajo tu responsabilidad aceptar el tp y tener el pvp on. Se considerará tpakill después de 2 muertes seguidas aceptando el tp.",
-    "Estafar a otros usuarios no está permitido.",
-    "El grifeo no está permitido. Grifeo se considerará el modificar una zona ajena conscientemente y de forma molesta, lo cual implica su respectiva sanción.",
-    "Hay granjas que no están permitidas ya que pueden dar lag, (la de oro, de hierro, las de aldeanos, las mecanismos de redstone como la de pesca afk) Anexo: No se permiten más de 10 aldeanos por shunk ya que se genera lag.",
-    "Las reglas están sujetas al sentido común, el staff siempre tendrá la última palabra."
-  ];
+  reglas_juego = REGLAS["reglas-minecraft"];
 
-  faltas = {
-    "Menos leve": "Abuso de mayúsculas, pedir cosas a los administradores. Después de 4 menos leves es leve",
-    "Leve": "kickear a criterio de staff (insulto, denigraciones, faltas de respeto en el chat) Después de 3 faltas leves es gravísima",
-    "Grave": "Ban de 2 semanas (Falta de respeto al staff, grifear, estafar, tpakill, Encontrar granjas que no son permitidas de tu propiedad, etc) Después de 2 faltas graves es gravísima. Independiente del tiempo se acumularan.",
-    "Gravísima": "Ban permanente (Aprovecharse de bug, usar modificaciones ilegales)"
-  };
+  faltas = REGLAS["faltas"];
 
   info = [
     "Versión 1.19 java",
@@ -65,6 +40,9 @@ export class MinecraftComponent {
   intervalId: any;
   message = '';
   infoServer;
+  comandos = false;
+  rules = true;
+  comandos_list = COMANDOS;
 
   num=100;
 
@@ -132,6 +110,17 @@ export class MinecraftComponent {
       this.infoServer = response;
       this.info[0] = "Servidor: "+this.infoServer.version +" ("+ this.infoServer.software +")"
     });
+
+  }
+
+  change_view(estado){
+    if(estado === "comandos"){
+      this.comandos = true;
+      this.rules = false;
+    }else if(estado === "rules"){
+      this.comandos = false;
+      this.rules = true;
+    }
 
   }
 

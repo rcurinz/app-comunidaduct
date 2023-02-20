@@ -1,0 +1,50 @@
+[
+    {
+        "command": "/register (puedes poner la contraseña que desees) (vuelve a poner la contraseña)",
+        "desc": "Este comando solamente lo ocuparan la primera vez que entren al servidor, la contraseña es privada y solo de ustedes."
+    },
+    {
+        "command":"/login (tu contraseña) ",
+        "desc":"Las siguiente veces que ingrese a nuestro servidor deberas ocupar la contraseña con la que te registraste."
+    },
+    {
+        "command":"/chunkclaim (nombre del chunk)", 
+        "desc":"Este comando te servira para crear protecciones en chunks a tu nombre. Debes pararte en el chunk y poner el anterior comando. Tienen que tener 100 pesos en el inventario, si no, no podrán claimear. Pueden proteger un total de 20 chunks."
+    },
+    {
+        "command":"/chunk access (nombre del jugador)",
+        "desc":"Este comando te permitirá darles permisos a tus amigos dentro de tus protecciones. Si deseas quitarle los permisos debes hacer nuevamente el mismo comando."
+    },
+    {
+        "command":"/set home (nombre del home)",
+        "desc":"Esté comando te permitirá crear casas, pueden tener hasta 4 homes."
+    },
+    {
+        "command":"/home (nombre de tu home)",
+        "desc":"Podrás tepearte automáticamente a las coordenadas de tu home."
+    },
+    {
+        "command":"/delhome (nombre)",
+        "desc":"Este comando te permitirá borrar el home que desees."
+    },
+    {
+        "command":"/tpa (nombre de jugador)",
+        "desc":"Le enviará un mensaje en donde te pides permiso para tepearte a un jugador."
+    },
+    {
+        "command":"/tpaccept",
+        "desc":"Es para aceptar el tp."
+    },
+    {
+        "command":"/jobs ",
+        "desc":"Muestra todos los trabajos disponibles."
+    },
+    {
+        "command":"/rewards",
+        "desc":"Para reclamar recompensas diarias, comenzará a correr el tiempo cuando entren por primera vez."
+    },
+    {
+        "command":"/kit",
+        "desc":"Para poder reclamar un kit inicial (Válido solo una vez)."
+    }
+]
