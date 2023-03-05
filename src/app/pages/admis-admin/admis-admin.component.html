@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="columns">
+        <div class="column">
+            <div class="columns">
+                <div class="column centrar">
+                    <p class="title">Listado de administradores</p>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <p-button label="Agregar nuevo admin" (click)="showDialog()" icon="pi pi-check" styleClass="p-button-sm"></p-button>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <table class="table" style="width: 100%;">
+                        <thead>
+                        <tr>
+                            <th>Nick</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Ingreso</th>
+                            <th>Estado</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of admins">
+                            <td>{{item.username}}</td>
+                            <td>{{item.pass}}</td>
+                            <td>{{item.tipo}}</td>
+                            <td>{{item.ingreso | date:'dd/MM/yyyy'}}</td>
+                            <td>{{item.estado}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Registro de nuevo administrador" [(visible)]="displayModal" [style]="{width: '50vw'}">
+    <div class="columns">
+        <div class="column">
+            Nickname
+        </div>
+        <div class="column">
+            <input class="input" type="text"  name="username" placeholder="Text input">
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            Nombre
+        </div>
+        <div class="column">
+            <input class="input" type="text" name="name" placeholder="Text input">
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            Ingreso
+        </div>
+        <div class="column">
+            <input class="input" type="text" name="ingreso" placeholder="Text input">
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            Password
+        </div>
+        <div class="column">
+            <input class="input" type="password" name="pass" placeholder="Text input">
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-xmark" (click)="displayModal=false" label="Cancelar" styleClass="p-button-danger"></p-button>
+        <p-button icon="pi pi-check" (click)="displayModal=false" label="Agregar" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>

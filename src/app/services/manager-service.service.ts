@@ -36,7 +36,8 @@ export class ManagerServiceService {
   }
 
 
-
-
+  getDataAdmins():Observable<any>{
+    return this.httpClient.get(APIS['projects'] +'getDataAdmins');
+  }
 
 }

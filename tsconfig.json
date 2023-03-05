@@ -24,7 +24,28 @@
     "paths": {
       "@raw-data/*": [
         "./src/raw-data/*"
-      ]
+      ],
+      "@models/*": [
+        "./src/app/models/*"
+      ],
+      "@services/*":[
+        "./src/app/services/*"
+      ],
+      "@guards/*":[
+        "./src/app/guards/*"
+      ],
+      "@components/*":[
+        "./src/app/components/*"
+      ],
+      "@directives/*":[
+        "./src/app/directives/*"
+      ],
+      "@pipes/*":[
+        "./src/app/pipes/*"
+      ],
+      "@interceptors/*":[
+        "./src/app/interceptors/*"
+      ],
 
     },
     "resolveJsonModule": true,

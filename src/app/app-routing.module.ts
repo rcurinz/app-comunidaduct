@@ -7,6 +7,15 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { ContadorComponent } from './components/contador/contador.component';
 import { SelectAdminsComponent } from './pages/select-admins/select-admins.component';
 import { MinecraftComponent } from './pages/minecraft/minecraft.component';
+import { CountAdminsComponent } from './pages/count-admins/count-admins.component';
+import { AdminsComponent } from './pages/admins/admins.component';
+import { AdminsDashComponent } from './pages/admins-dash/admins-dash.component';
+import { SisComponent } from './pages/sis/sis.component';
+import { AdmisAdminComponent } from './pages/admis-admin/admis-admin.component';
+
+
+import { AuthGuard } from '@guards/auth.guard';
+import { RedirectGuard } from '@guards/redirect.guard';
 
 const routes: Routes = [
   { path: '', component: RedesComponent, pathMatch: 'full' },
@@ -16,11 +25,26 @@ const routes: Routes = [
   { path: 'contador', component: ContadorComponent},
   { path: 'select-admins', component: SelectAdminsComponent},
   { path: 'minecraft', component: MinecraftComponent},
+  { path: 'count-admins', component: CountAdminsComponent},
+  { 
+    path: 'admins',
+    canActivate: [RedirectGuard], 
+    component: AdminsComponent,
+  },
+  { 
+    path: 'sis',
+    canActivate: [AuthGuard], 
+    component: SisComponent,
+    children: [
+      { path: 'admins-dash', component: AdminsDashComponent},
+      { path: 'admins-admin', component: AdmisAdminComponent},
+  ]
+},
   { path: '**',  component:  PageNotFoundComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
