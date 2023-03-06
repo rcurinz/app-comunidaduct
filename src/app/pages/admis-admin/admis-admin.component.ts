@@ -15,6 +15,13 @@ export class AdmisAdminComponent {
   faXmark = faXmark;
   admins: any;
   displayModal: boolean = false;
+  username: string;
+  nombre: string;
+  password: string;
+  ingreso: string;
+  tipo: string;
+  rol: string;
+
 
   ngOnInit(): void {
     this.getDataAdmins();
@@ -31,6 +38,25 @@ export class AdmisAdminComponent {
 
   showDialog() {
     this.displayModal = true;
-}
+  }
+
+  registrrarAdmin(){
+    console.log(this.username, this.nombre, this.password, this.ingreso, this.tipo);
+    const data = {
+      username: this.username,
+      nombre: this.nombre,
+      password: this.password,
+      ingreso: this.ingreso,
+      tipo: this.tipo,
+      role: this.rol
+    }
+    this.authService.registrarAdmin(data).subscribe({
+      next: (info) => {
+        console.log(info);
+        this.getDataAdmins();
+      }
+    });
+
+  }
 
 }

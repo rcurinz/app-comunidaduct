@@ -6,7 +6,10 @@
 
     <!-- Core theme CSS -->
 
-    <div id="contenedor">
+    <div id="contenedor" [style.--bgColor]="isDay ? 'rgb(187, 160, 27)' : '#223344'"
+    [style.--bgColor2]="isDay ? 'rgb(208, 37, 7)' : '#090a0f'"
+    [style.--accentColor]="'#FFF'" 
+    [style.--delay]="'.3s'">
     <!-- Parallax Pixel Background Animation -->
     <section class="animated-background">
       <div id="stars1"></div>
@@ -22,12 +25,16 @@
     <div id="userName">
       Comunidad UCT
     </div>
-
+    
     <div id="links">
-      <a class="link" *ngFor="let item of nombres" href="{{item['link']}}" target="_blank">
-        <i class="{{item['clase']}}">&nbsp;</i>{{item['nombre']}}
+      <a class="link" *ngFor="let item of nombres; let i = index" href="{{item['link']}}" target="_blank">
+        <i class="{{item['clase']}}">&nbsp;</i>
+        <ng-container *ngIf="i === 0; then strongName else regularName"></ng-container>
+        <ng-template #strongName><strong>{{item['nombre']}}</strong></ng-template>
+        <ng-template #regularName>{{item['nombre']}}</ng-template>
       </a>
     </div>
+    
 
     <div id="hashtag">
       #BeHappy❤

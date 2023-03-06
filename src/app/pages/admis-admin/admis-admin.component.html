@@ -18,15 +18,16 @@
                         <tr>
                             <th>Nick</th>
                             <th>Nombre</th>
-                            <th>Tipo</th>
+                            <th>Pagina</th>
                             <th>Ingreso</th>
                             <th>Estado</th>
+                            <th>Rol</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr *ngFor="let item of admins">
                             <td>{{item.username}}</td>
-                            <td>{{item.pass}}</td>
+                            <td>{{item.name}}</td>
                             <td>{{item.tipo}}</td>
                             <td>{{item.ingreso | date:'dd/MM/yyyy'}}</td>
                             <td>{{item.estado}}</td>
@@ -45,7 +46,7 @@
             Nickname
         </div>
         <div class="column">
-            <input class="input" type="text"  name="username" placeholder="Text input">
+            <input class="input" type="text"  name="username" [(ngModel)]="username" placeholder="Text input">
         </div>
     </div>
     <div class="columns">
@@ -53,7 +54,7 @@
             Nombre
         </div>
         <div class="column">
-            <input class="input" type="text" name="name" placeholder="Text input">
+            <input class="input" type="text" name="name"  [(ngModel)]="nombre" placeholder="Text input">
         </div>
     </div>
     <div class="columns">
@@ -61,7 +62,38 @@
             Ingreso
         </div>
         <div class="column">
-            <input class="input" type="text" name="ingreso" placeholder="Text input">
+            <input type="date" [(ngModel)]="ingreso" name="ingreso" >
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            Pagina
+        </div>
+        <div class="column">
+            <div class="select">
+                <select [(ngModel)]="tipo" [value]="">
+                  <option value="10" selected>Confesiones</option>
+                  <option value="11">Ayuda</option>
+                  <option value="12">Napping</option>
+                  <option value="13">Encuestas y memes</option>
+                </select>
+              </div>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            Rol
+        </div>
+        <div class="column">
+            <div class="select">
+                <select [(ngModel)]="rol" [value]="">
+                    <!--<option value="1" selected>Super Admin</option>-->
+                    <option value="2" selected>Admin Jefe</option>
+                    <option value="3">Jefe pagina</option>
+                    <option value="4">Comun</option>
+                    <option value="5">Otro</option>
+                </select>
+              </div>
         </div>
     </div>
     <div class="columns">
@@ -69,11 +101,11 @@
             Password
         </div>
         <div class="column">
-            <input class="input" type="password" name="pass" placeholder="Text input">
+            <input class="input" type="password" name="pass" [(ngModel)]="password" placeholder="Text input">
         </div>
     </div>
     <ng-template pTemplate="footer">
         <p-button icon="pi pi-xmark" (click)="displayModal=false" label="Cancelar" styleClass="p-button-danger"></p-button>
-        <p-button icon="pi pi-check" (click)="displayModal=false" label="Agregar" styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-check" (click)="registrrarAdmin();displayModal=false" label="Agregar"  styleClass="p-button-text"></p-button>
     </ng-template>
 </p-dialog>

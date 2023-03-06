@@ -32,6 +32,10 @@ export class AuthService {
   }
 
   getAdmins(){
-    return this.http.get(APIS['projects'] +'getadmins', { context: checkToken()   });
+    return this.http.get(APIS['projects'] +'getadmins', { context: checkToken() });
+  }
+
+  registrarAdmin(data){
+    return this.http.post(APIS['projects'] +'registeradmin',data,  {context: checkToken()});
   }
 }

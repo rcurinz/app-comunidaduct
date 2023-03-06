@@ -12,6 +12,7 @@ import { AdminsComponent } from './pages/admins/admins.component';
 import { AdminsDashComponent } from './pages/admins-dash/admins-dash.component';
 import { SisComponent } from './pages/sis/sis.component';
 import { AdmisAdminComponent } from './pages/admis-admin/admis-admin.component';
+import { RutasComponent } from './pages/rutas/rutas.component';
 
 
 import { AuthGuard } from '@guards/auth.guard';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'select-admins', component: SelectAdminsComponent},
   { path: 'minecraft', component: MinecraftComponent},
   { path: 'count-admins', component: CountAdminsComponent},
+  { path: 'rutas', component: RutasComponent},
   { 
     path: 'admins',
     canActivate: [RedirectGuard], 

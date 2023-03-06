@@ -33,6 +33,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import {MenubarModule} from 'primeng/menubar';
 import {ButtonModule} from 'primeng/button';
 import {DialogModule} from 'primeng/dialog';
+import { RutasComponent } from './pages/rutas/rutas.component';
+import {CalendarModule} from 'primeng/calendar';
+
 
 
 @NgModule({
@@ -51,7 +54,8 @@ import {DialogModule} from 'primeng/dialog';
     AdminsDashComponent,
     SisComponent,
     NavBarComponent,
-    AdmisAdminComponent
+    AdmisAdminComponent,
+    RutasComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +70,7 @@ import {DialogModule} from 'primeng/dialog';
     CardModule,
     DialogModule,
     DataViewModule,
+    CalendarModule,
     MenubarModule
   ],
   providers: [{
