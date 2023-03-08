@@ -15,9 +15,10 @@
                 <div class="columns">
                     <div class="column centrar">
                         <div class="select is-small">
-                            <select>
-                                <option>7B</option>
-                                <option>7A</option>
+                            <select [value]="" (change)="ejecutarFuncion($event)">
+                                <option selected value="C">Seleccione</option>
+                                <option value="7">Linea 7</option>
+                                <!--<option value="7A">7A</option>-->
                             </select>
                         </div>
                     </div>

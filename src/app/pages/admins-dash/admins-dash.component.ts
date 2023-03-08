@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import * as echarts from 'echarts';
 import { ManagerServiceService } from 'src/app/services/manager-service.service';
 import { UsersService } from '@services/users.service';
+import { AuthService } from '@services/auth.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { UsersService } from '@services/users.service';
 })
 export class AdminsDashComponent {
 
-  constructor(private usersService: UsersService, private manageApi: ManagerServiceService) { }
+  constructor(private usersService: UsersService, private manageApi: ManagerServiceService, private authService: AuthService) { }
 
   ngOnInit() {
     this.usersService.user().subscribe({
@@ -20,6 +21,7 @@ export class AdminsDashComponent {
       }
     })
     this.getDataAdmins();
+    this.getConfesiones();
   }
 
   getGraph(info){
@@ -83,7 +85,15 @@ export class AdminsDashComponent {
       (data)=>{
         this.getGraph(data);
       }
-  )
+    )
+  }
+
+  getConfesiones(){
+    this.authService.getConfessions().subscribe(
+      (data)=>{
+        console.log(data)
+      }
+    )
   }
   
 }

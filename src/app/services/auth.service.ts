@@ -38,4 +38,8 @@ export class AuthService {
   registrarAdmin(data){
     return this.http.post(APIS['projects'] +'registeradmin',data,  {context: checkToken()});
   }
+
+  getConfessions(){
+    return this.http.get(APIS['projects'] +'getconfes', { context: checkToken() });
+  }
 }
