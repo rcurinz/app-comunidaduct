@@ -18,4 +18,9 @@ export class UsersService {
       context: checkToken()
     });
   }
+  user(){
+    return this.http.get(`${APIS.projects}users`,{
+      context: checkToken()
+    });
+  }
 }
