@@ -42,4 +42,12 @@ export class AuthService {
   getConfessions(){
     return this.http.get(APIS['projects'] +'getconfes', { context: checkToken() });
   }
+
+  getConfesBettwenDates(date1, date2){
+    const data = {
+      date1: date1,
+      date2: date2
+    }
+    return this.http.post(APIS['projects'] +'getconfesbetweendates', data, { context: checkToken() });
+  }
 }
