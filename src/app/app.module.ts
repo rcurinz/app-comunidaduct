@@ -35,6 +35,7 @@ import {ButtonModule} from 'primeng/button';
 import {DialogModule} from 'primeng/dialog';
 import { RutasComponent } from './pages/rutas/rutas.component';
 import {CalendarModule} from 'primeng/calendar';
+import { ControlAsistenciaComponent } from './pages/control-asistencia/control-asistencia.component';
 
 
 
@@ -55,7 +56,8 @@ import {CalendarModule} from 'primeng/calendar';
     SisComponent,
     NavBarComponent,
     AdmisAdminComponent,
-    RutasComponent
+    RutasComponent,
+    ControlAsistenciaComponent
   ],
   imports: [
     BrowserModule,

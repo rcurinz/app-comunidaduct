@@ -13,6 +13,7 @@ import { AdminsDashComponent } from './pages/admins-dash/admins-dash.component';
 import { SisComponent } from './pages/sis/sis.component';
 import { AdmisAdminComponent } from './pages/admis-admin/admis-admin.component';
 import { RutasComponent } from './pages/rutas/rutas.component';
+import { ControlAsistenciaComponent } from './pages/control-asistencia/control-asistencia.component';
 
 
 import { AuthGuard } from '@guards/auth.guard';
@@ -40,6 +41,7 @@ const routes: Routes = [
     children: [
       { path: 'admins-dash', component: AdminsDashComponent},
       { path: 'admins-admin', component: AdmisAdminComponent},
+      { path: 'control-asistencia',  component:  ControlAsistenciaComponent}
   ]
 },
   { path: '**',  component:  PageNotFoundComponent}

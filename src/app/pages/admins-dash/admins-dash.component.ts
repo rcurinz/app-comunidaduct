@@ -29,11 +29,11 @@ export class AdminsDashComponent {
   getGraph(info){
 
     var data = info['data'];
-    console.log(data)
+    /*console.log(data)
     var fechas = data.Fechas;
     var Admins = data.admins;
     var keys = Object.keys(Admins)
-    console.log(keys)
+    console.log(keys)*/
     
     var data_x = [];
     var data_y = [];
