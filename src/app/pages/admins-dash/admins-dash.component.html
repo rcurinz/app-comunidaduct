@@ -1,20 +1,32 @@
-<p>wenas</p>
 
-<div class="dash_actual">
-    <div id="dash_1" style="width: 100%; height: 800px;"></div>
-</div>
-
-<div class="dash_histo">
-    
-</div>
-
-<div class="dash_per">i</div>
-
-<div class="dash_actual">
-    <div id="dash_2" style="width: 450px; height: 400px;"></div>
+<div class="select">
+    <select>
+      <option (click)="getTime('Actual')" >Actual</option>
+      <option (click)="getTime('Historico')">Historico</option>
+    </select>
 </div>
 
 
-<div class="dash_actual">
-    <div id="dash_3" style="width: 450px; height: 400px;"></div>
+<div class="columns">
+
+  <div class="column is-two-thirds">
+    <div class="dash_actual">
+      <div id="dash_1" style="width: 100%; height: 800px;"></div>
+    </div>
+  </div>
+
+  <div class="column is-one-third">
+    <div class="dash_per"></div>
+
+    <div class="dash_actual">
+        <div id="dash_2" style="width: 100%; height: 400px;"></div>
+    </div>
+
+
+    <div class="dash_actual">
+        <div id="dash_3" style="width: 100%; height: 400px;"></div>
+    </div>
+  </div>
+
 </div>
+

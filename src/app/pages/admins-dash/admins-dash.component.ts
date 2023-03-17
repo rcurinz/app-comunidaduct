@@ -15,7 +15,7 @@ export class AdminsDashComponent {
   constructor(private usersService: UsersService, private manageApi: ManagerServiceService, private authService: AuthService) { }
 
   ngOnInit() {
-   
+
     //this.getConfesiones();
     var date1 = new Date();
     date1.setHours(6,0,0,0);
@@ -24,25 +24,43 @@ export class AdminsDashComponent {
     date2.setHours(3,0,0,0);
     this.getConfesBettwenDates(date1, date2);
     this.getDataAdmins();
+    this.getTime("Actual");
+  }
+
+  getTime(tipo){
+    if (tipo==="Historico"){
+
+    }else if(tipo==="Actual"){
+      var Tactual = new Date();
+      var selectedDate = new Date();
+      console.log(selectedDate, Tactual)
+
+      selectedDate.setDate(1);
+      selectedDate.setMonth(0);
+      selectedDate.setFullYear(new Date().getFullYear());
+    }
   }
 
   getGraph(info){
 
-    var data = info['data'];
-    /*console.log(data)
-    var fechas = data.Fechas;
-    var Admins = data.admins;
-    var keys = Object.keys(Admins)
-    console.log(keys)*/
-    
-    var data_x = [];
-    var data_y = [];
-    var set_data = [];
- 
+    console.log(info)
+
+    var admin = info["data"].Admins;
+    var n_admins = Object.keys(admin);
+    var fechas = info["data"].Fecha;
+    console.log(n_admins)
+    var IndiceInicio = 11;
+    var AnioActual = fechas.slice(IndiceInicio);
     var chartDom = document.getElementById('dash_1');
     var myChart = echarts.init(chartDom);
     var option;
+    var data = [];
 
+
+    for (var i = 0; i < n_admins.length; i++){
+      data.push({"name": n_admins[i], "data": admin[n_admins[i]], "type": "line"})
+    }
+    console.log("a",data)
     option = {
       tooltip:{
         trigger: 'axis'
@@ -51,12 +69,12 @@ export class AdminsDashComponent {
         text: 'Rendimiento vs Tiempo',
         subtext: 'Analisis de ineficiencia',
         left: 'center'
-      }, 
+      },
       xAxis: {
         type: 'category',
         name: 'Periodo',
         axisLabel: { interval: 0, rotate: 70 },
-        data: data_x
+        data: AnioActual
       },
       grid: {
         left: '5%',
@@ -69,7 +87,7 @@ export class AdminsDashComponent {
         type: 'value',
         name: 'Porcentaje'
       },
-      series: set_data
+      series: data
     };
 
     option && myChart.setOption(option);
@@ -86,7 +104,7 @@ export class AdminsDashComponent {
     data_sem[day] = data.length;
 
     console.log(data_sem)
- 
+
     var chartDom = document.getElementById('dash_2');
     var myChart = echarts.init(chartDom);
     var option;
@@ -99,7 +117,7 @@ export class AdminsDashComponent {
         text: 'Cantidad de confesiones por dia de la semana',
         subtext: 'Analisis de confesiones',
         left: 'center'
-      }, 
+      },
       xAxis: {
         type: 'category',
         name: 'Dia de la semana',
@@ -158,7 +176,7 @@ export class AdminsDashComponent {
     console.log(key,values)
 
 
- 
+
     var chartDom = document.getElementById('dash_3');
     var myChart = echarts.init(chartDom);
     var option;
@@ -172,7 +190,7 @@ export class AdminsDashComponent {
         text: 'Cantidad de confesiones por admin en el dia de hoy',
         subtext: 'Analisis de confesiones',
         left: 'center'
-      }, 
+      },
       xAxis: {
         type: 'category',
         name: 'Dia de la semana',
@@ -201,7 +219,7 @@ export class AdminsDashComponent {
     option && myChart.setOption(option);
   }
 
-    
+
 
   getDataAdmins(){
     this.manageApi.getDataAdmins().subscribe(
@@ -227,7 +245,7 @@ export class AdminsDashComponent {
       }
     )
   }
-  
+
 }
 
 
