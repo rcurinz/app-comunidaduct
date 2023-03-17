@@ -50,4 +50,16 @@ export class AuthService {
     }
     return this.http.post(APIS['projects'] +'getconfesbetweendates', data, { context: checkToken() });
   }
+
+  saveAsistencia(asistencia, fecha){
+    const data = {
+      asistencia: asistencia,
+      fecha: fecha
+    }
+    return this.http.post(APIS['projects'] +'admins/saveasistencia', data, { context: checkToken() });
+  }
+
+  getAdminById(id){
+    return this.http.post(APIS['projects'] +'getadminbyid',{'id':id} , { context: checkToken() });
+  }
 }

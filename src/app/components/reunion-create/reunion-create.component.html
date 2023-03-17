@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="columns">
+        <div class="column is-one-fifth centrar">
+            Fecha de la asistencia
+        </div>
+        <div class="column is-one-quarter">
+            <input type="date" class="input" [(ngModel)]="fecha">
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column  is-one-fifth">
+            Nombre admin
+        </div>
+        <div class="column is-one-fifth">
+            Asistencia
+        </div>    
+    </div>
+    <div class="columns" *ngFor="let item of admins; let i = index">
+        <div id="admin-{{item.id}}" class="column  is-one-fifth">
+            {{item.username}}
+        </div>
+        <div class="column is-one-fifth">
+            <div class="control">
+                <label class="radio">
+                  <input type="radio" id="answer-{{item.id}}" name="answer-{{item.id}}">
+                  Si
+                </label>
+                <label class="radio">
+                  <input type="radio" id="answer-{{item.id}}" name="answer-{{item.id}}">
+                  No
+                </label>
+            </div>
+        </div>    
+    </div>
+    <div class="columns">
+        <div class="column is-one-fifth">
+            <button class="button is-primary" (click)="saveAsistnecia()">Guardar Asistencia</button>
+        </div>
+    </div>
+</div>

@@ -41,7 +41,7 @@ const routes: Routes = [
     children: [
       { path: 'admins-dash', component: AdminsDashComponent},
       { path: 'admins-admin', component: AdmisAdminComponent},
-      { path: 'control-asistencia',  component:  ControlAsistenciaComponent}
+      { path: 'reuniones',  component:  ControlAsistenciaComponent}
   ]
 },
   { path: '**',  component:  PageNotFoundComponent}

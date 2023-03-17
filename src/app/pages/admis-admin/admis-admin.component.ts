@@ -59,4 +59,27 @@ export class AdmisAdminComponent {
 
   }
 
+  show_modal(){
+    const modal = document.getElementById("modal-edit-admin");
+    if(modal.classList.contains("is-active")){
+      modal.classList.remove("is-active");
+    }else{
+      modal.classList.add("is-active");
+    }
+  }
+
+  getAdmin(admin){
+    console.log("ID Admin",admin);
+    this.authService.getAdminById(admin).subscribe({
+      next: (info) => {
+        console.log(info);
+        this.username = info['username'];
+        this.nombre = info['nombre'];
+        this.ingreso = info['ingreso'];
+        this.tipo = info['tipo'];
+        this.rol = info['role'];
+      }
+    });
+  }
+
 }

@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { AuthService } from '@services/auth.service';
 
 @Component({
-  selector: 'app-control-asistencia',
-  templateUrl: './control-asistencia.component.html',
-  styleUrls: ['./control-asistencia.component.scss']
+  selector: 'app-reunion-create',
+  templateUrl: './reunion-create.component.html',
+  styleUrls: ['./reunion-create.component.scss']
 })
-export class ControlAsistenciaComponent {
+export class ReunionCreateComponent {
 
   fecha;
   admins;

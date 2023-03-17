@@ -36,6 +36,7 @@ import {DialogModule} from 'primeng/dialog';
 import { RutasComponent } from './pages/rutas/rutas.component';
 import {CalendarModule} from 'primeng/calendar';
 import { ControlAsistenciaComponent } from './pages/control-asistencia/control-asistencia.component';
+import { ReunionCreateComponent } from './components/reunion-create/reunion-create.component';
 
 
 
@@ -57,7 +58,8 @@ import { ControlAsistenciaComponent } from './pages/control-asistencia/control-a
     NavBarComponent,
     AdmisAdminComponent,
     RutasComponent,
-    ControlAsistenciaComponent
+    ControlAsistenciaComponent,
+    ReunionCreateComponent
   ],
   imports: [
     BrowserModule,
