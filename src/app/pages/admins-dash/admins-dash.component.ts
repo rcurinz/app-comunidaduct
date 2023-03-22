@@ -39,22 +39,33 @@ export class AdminsDashComponent {
   }
 
   getGraph(info){
+
     var admin = info["data"].Admins;
     var n_admins = Object.keys(admin);
     var fechas = info["data"].Fecha;
-    //console.log(n_admins)
+
     var IndiceInicio = 11;
     var AnioActual = fechas.slice(IndiceInicio);
+    
     var chartDom = document.getElementById('dash_1');
     var myChart = echarts.init(chartDom);
     var option;
-    var data = [];
+    
+    function generateData(startIndex) {
+      var data = [];
 
-    for (var i = 0; i < n_admins.length; i++){
-      data.push({"name": n_admins[i], "data": admin[n_admins[i]], "type": "line"})
+      for (var i = 0; i < n_admins.length; i++) {
+
+        var adminData = admin[n_admins[i]].slice(startIndex);
+
+        data.push({"name": n_admins[i], "data": adminData, "type": "line"});
+      }
+      return data;
     }
 
-    //console.log("a",data)
+    var startIndex = 11;
+    var mydata = generateData(startIndex);
+    
     option = {
       tooltip:{
         trigger: 'axis'
@@ -81,7 +92,7 @@ export class AdminsDashComponent {
         type: 'value',
         name: 'Porcentaje'
       },
-      series: data
+      series: mydata
     };
 
     option && myChart.setOption(option);
