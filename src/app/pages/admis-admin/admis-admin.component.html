@@ -29,7 +29,7 @@
                         <tr *ngFor="let item of admins">
                             <td>{{item.username}}</td>
                             <td>{{item.name}}</td>
-                            <td>{{item.tipo}}</td>
+                            <td>{{item.nombre_pagina}}</td>
                             <td>{{item.ingreso | date:'dd/MM/yyyy'}}</td>
                             <td>{{item.estado}}</td>
                             <td>{{item.rol}}</td>
@@ -126,11 +126,79 @@
         <button class="delete" aria-label="close" (click)="show_modal()"></button>
       </header>
       <section class="modal-card-body">
-        <!-- Content ... -->
+        <div class="columns">
+            <div class="column">
+                Nickname
+            </div>
+            <div class="column">
+                <input class="input" type="text"  name="username" [(ngModel)]="username" placeholder="Text input">
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                Nombre
+            </div>
+            <div class="column">
+                <input class="input" type="text" name="name"  [(ngModel)]="nombre" placeholder="Text input">
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                Ingreso
+            </div>
+            <div class="column">
+                <input class="input" type="date" id="edit-fecha" [value]="ingreso  | date:'yyyy-MM-dd'" placeholder="Fecha" >
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                Pagina
+            </div>
+            <div class="column">
+                <div class="select">
+                    <select [(ngModel)]="tipo" [value]="tipo">
+                      <option *ngFor="let p of paginas" value="{{p.id}}" >{{p.nombre}}</option>
+                    </select>
+                  </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                Rol
+            </div>
+            <div class="column">
+                <div class="select">
+                    <select id="rol" value="">
+                        <option *ngFor="let r of roles" value="{{r.id}}">{{r.nombre}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                Password
+            </div>
+            <div class="column">
+                <input class="input" type="password" name="pass" [(ngModel)]="password" placeholder="Text input">
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                Estado
+            </div>
+            <div class="column">
+                <div class="select">
+                    <select [(ngModel)]="estado" [value]="">
+                        <option value="1" selected>Activo</option>
+                        <option value="0">Inactivo</option>
+                    </select>
+                  </div>
+            </div>
+        </div>
       </section>
-      <footer class="modal-card-foot">
-        <button class="button is-success">Save changes</button>
-        <button class="button" (click)="show_modal()">Cancel</button>
+      <footer class="modal-card-foot centrar">
+        <button class="button is-success" (click)="updateAdmin()">Guardar cambios</button>
+        <button class="button" (click)="show_modal()">Cancelar</button>
       </footer>
     </div>
 </div>

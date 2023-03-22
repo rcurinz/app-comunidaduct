@@ -15,26 +15,23 @@ export class AdminsDashComponent {
   constructor(private usersService: UsersService, private manageApi: ManagerServiceService, private authService: AuthService) { }
 
   ngOnInit() {
-
     //this.getConfesiones();
     var date1 = new Date();
     date1.setHours(6,0,0,0);
     var date2 = new Date();
     date2.setDate(date2.getDate() + 1);
     date2.setHours(3,0,0,0);
-    this.getConfesBettwenDates(date1, date2);
     this.getDataAdmins();
-    this.getTime("Actual");
+    this.getCountForDay();
+    this.getConfesBettwenDates(date1, date2);
+    
   }
 
   getTime(tipo){
     if (tipo==="Historico"){
-
     }else if(tipo==="Actual"){
       var Tactual = new Date();
       var selectedDate = new Date();
-      console.log(selectedDate, Tactual)
-
       selectedDate.setDate(1);
       selectedDate.setMonth(0);
       selectedDate.setFullYear(new Date().getFullYear());
@@ -42,13 +39,10 @@ export class AdminsDashComponent {
   }
 
   getGraph(info){
-
-    console.log(info)
-
     var admin = info["data"].Admins;
     var n_admins = Object.keys(admin);
     var fechas = info["data"].Fecha;
-    console.log(n_admins)
+    //console.log(n_admins)
     var IndiceInicio = 11;
     var AnioActual = fechas.slice(IndiceInicio);
     var chartDom = document.getElementById('dash_1');
@@ -56,11 +50,11 @@ export class AdminsDashComponent {
     var option;
     var data = [];
 
-
     for (var i = 0; i < n_admins.length; i++){
       data.push({"name": n_admins[i], "data": admin[n_admins[i]], "type": "line"})
     }
-    console.log("a",data)
+
+    //console.log("a",data)
     option = {
       tooltip:{
         trigger: 'axis'
@@ -95,15 +89,16 @@ export class AdminsDashComponent {
 
   getGraphcount(info){
     var data_sem = [0,0,0,0,0,0,0];
-    console.log(info);
+    var data_sem_str = ["Domingo 0", "Lunes 0", "Martes 0", "Miercoles 0", "Jueves 0", "Viernes 0","Sabado 0"];
+    //console.log(info);
     var data = info['confesiones'];
     var today = new Date();
     var day = today.getDay();
     var daylist = ["Domingo","Lunes","Martes","Miercoles ","Jueves","Viernes","Sabado"];
     var daytoday = daylist[day];
     data_sem[day] = data.length;
-
-    console.log(data_sem)
+    data_sem_str[day] = daytoday + " " + data.length;
+    console.log(data_sem_str);
 
     var chartDom = document.getElementById('dash_2');
     var myChart = echarts.init(chartDom);
@@ -122,7 +117,64 @@ export class AdminsDashComponent {
         type: 'category',
         name: 'Dia de la semana',
         axisLabel: { interval: 0, rotate: 70 },
-        data: ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"]
+        data: data_sem_str//["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"]
+      },
+      grid: {
+        left: '5%',
+        right: '5%',
+        bottom: '1%',
+        top: '20%',
+        containLabel: true
+      },
+      yAxis: {
+        type: 'value',
+        name: 'Cantidad'
+      },
+      series: [
+        {
+          name: 'Confesiones',
+          type: 'bar',
+          data: data_sem
+        }
+      ]
+    };
+
+    option && myChart.setOption(option);
+  }
+
+
+  graphByDayWeek(info){
+    var data_sem = [0,0,0,0,0,0,0];
+    var keys = Object.keys(info);
+    var values = Object.values(info);
+    var str_days = ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
+    console.log(keys.length);
+    for (const fecha of keys) {
+      const diaDeLaSemana = new Date(fecha).getDay();
+      const value = values[keys.indexOf(fecha)] as number;
+      data_sem[diaDeLaSemana] += value;
+      str_days[diaDeLaSemana] = str_days[diaDeLaSemana] + " " + (new Date(fecha).getUTCDate());
+      //console.log(fecha, new Date(fecha).getUTCDate());
+    }
+
+    var chartDom = document.getElementById('dash_2');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+      tooltip:{
+        trigger: 'axis'
+      },
+      title: {
+        text: 'Cantidad de confesiones por dia de la semana',
+        subtext: 'Analisis de confesiones',
+        left: 'center'
+      },
+      xAxis: {
+        type: 'category',
+        name: 'Dia de la semana',
+        axisLabel: { interval: 0, rotate: 70 },
+        data: str_days//["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"]
       },
       grid: {
         left: '5%',
@@ -149,7 +201,6 @@ export class AdminsDashComponent {
 
   getGraphcountForAdmin(info){
     var data_sem = [0,0,0,0,0,0,0];
-    console.log(info);
     var data = info['confesiones'];
     var names_admins = [];
     var admins = {};
@@ -173,10 +224,6 @@ export class AdminsDashComponent {
       data_admins.push({name:key[i], data:values[i]});
     }
 
-    console.log(key,values)
-
-
-
     var chartDom = document.getElementById('dash_3');
     var myChart = echarts.init(chartDom);
     var option;
@@ -187,7 +234,7 @@ export class AdminsDashComponent {
       },
       legend: {},
       title: {
-        text: 'Cantidad de confesiones por admin en el dia de hoy',
+        text: 'Cantidad de confesiones por \n admin en el dia de hoy',
         subtext: 'Analisis de confesiones',
         left: 'center'
       },
@@ -232,7 +279,7 @@ export class AdminsDashComponent {
   getConfesiones(){
     this.authService.getConfessions().subscribe(
       (data)=>{
-        console.log(data)
+        //console.log(data)
       }
     )
   }
@@ -240,8 +287,17 @@ export class AdminsDashComponent {
   getConfesBettwenDates(date1, date2){
     this.authService.getConfesBettwenDates(date1, date2).subscribe(
       (data)=>{
-        this.getGraphcount(data);
+        //this.getGraphcount(data);
         this.getGraphcountForAdmin(data);
+      }
+    )
+  }
+
+
+  getCountForDay(){
+    this.authService.getCountForDay().subscribe(
+      (data)=>{
+        this.graphByDayWeek(data);
       }
     )
   }

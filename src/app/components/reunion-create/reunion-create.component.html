@@ -1,39 +1,59 @@
-<div class="container">
-    <div class="columns">
-        <div class="column is-one-fifth centrar">
-            Fecha de la asistencia
+<div class="container ">
+    <article class="message is-success" style="margin-top: 10px;">
+        <div class="message-header" style="margin-bottom: 10px;">
+          <p>Fecha de la reunion</p>
         </div>
-        <div class="column is-one-quarter">
-            <input type="date" class="input" [(ngModel)]="fecha">
-        </div>
-    </div>
-    <div class="columns">
-        <div class="column  is-one-fifth">
-            Nombre admin
-        </div>
-        <div class="column is-one-fifth">
-            Asistencia
-        </div>    
-    </div>
-    <div class="columns" *ngFor="let item of admins; let i = index">
-        <div id="admin-{{item.id}}" class="column  is-one-fifth">
-            {{item.username}}
-        </div>
-        <div class="column is-one-fifth">
-            <div class="control">
-                <label class="radio">
-                  <input type="radio" id="answer-{{item.id}}" name="answer-{{item.id}}">
-                  Si
-                </label>
-                <label class="radio">
-                  <input type="radio" id="answer-{{item.id}}" name="answer-{{item.id}}">
-                  No
-                </label>
+        <div class="columns">
+            <div class="column is-one-fifth centrar" >
+                Seleccionar fecha
             </div>
-        </div>    
-    </div>
+            <div class="column is-one-quarter">
+                <input type="date" class="input" [(ngModel)]="fecha">
+            </div>
+        </div>
+      </article>
+      <article class="message is-success">
+        <div class="message-header" style="margin-bottom: 10px;">
+          <p>Administradores participantes</p>
+        </div>
+        <div class="columns">
+            <div class="column centrar is-one-fifth">
+                Nombre admin
+            </div>
+            <div class="column centrar is-one-fifth">
+                Asistencia
+            </div>
+            <div class="column centrar">
+                Nota
+            </div>      
+        </div>
+        <div class="columns" *ngFor="let item of admins; let i = index">
+            <div id="admin-{{item.id}}" class="column centrar is-one-fifth">
+                {{item.username}}
+            </div>
+            <div class="column centrar is-one-fifth">
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" id="answer-{{item.id}}" name="answer-{{item.id}}">
+                      Si
+                    </label>
+                    <label class="radio">
+                        <input type="radio" id="answer-{{item.id}}" name="answer-{{item.id}}">
+                      No
+                    </label>
+                    <label class="radio">
+                        <input type="radio" id="answer-{{item.id}}" name="answer-{{item.id}}">
+                        Tarde
+                    </label>
+                </div>
+            </div>
+            <div class="column">
+                <input type="text" class="input" id="nota-{{item.id}}" name="nota-{{item.id}}">
+            </div>    
+        </div>
+      </article>
     <div class="columns">
-        <div class="column is-one-fifth">
+        <div class="column centrar">
             <button class="button is-primary" (click)="saveAsistnecia()">Guardar Asistencia</button>
         </div>
     </div>

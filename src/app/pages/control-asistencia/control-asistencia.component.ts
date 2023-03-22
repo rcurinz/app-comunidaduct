@@ -10,6 +10,7 @@ export class ControlAsistenciaComponent {
 
   fecha;
   admins;
+  opciones = [false, false]
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -42,4 +43,17 @@ export class ControlAsistenciaComponent {
     });
   }
 
+
+  showOpcion(n){
+    this.hiddeAll();
+    if(n === 0){
+      this.opciones[0] = true;
+    }
+  }
+
+  hiddeAll(){
+    for (let i = 0; i < this.opciones.length; i++) {
+      this.opciones[i] = false;
+    }
+  }
 }

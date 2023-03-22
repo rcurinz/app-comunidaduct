@@ -1,0 +1,17 @@
+.navbar {
+    background-color: #01D1B2; /* Azul de Facebook */
+    color: white;
+  }
+  
+  /* Estilos para los elementos de menú */
+  .navbar-item:hover,
+  .navbar-item.is-active {
+    background-color: #8b9dc3; /* Azul claro de Facebook */
+    color: white;
+  }
+  
+  /* Estilos para el texto del menú desplegable */
+  .navbar-dropdown a.navbar-item:hover {
+    background-color: #8b9dc3; /* Azul claro de Facebook */
+    color: white;
+  }

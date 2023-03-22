@@ -21,17 +21,24 @@ export class AdmisAdminComponent {
   ingreso: string;
   tipo: string;
   rol: string;
+  rol_id: string;
+  estado: string;
+
+  paginas: any;
+  roles: any;
 
 
   ngOnInit(): void {
     this.getDataAdmins();
+    this.getPages();
+    this.getRoles();
   }
 
   getDataAdmins(){
     this.authService.getAdmins().subscribe({
       next: (info) => {
         this.admins = info['administradores'];
-        console.log(this.admins);
+        //console.log(this.admins);
       }
     });
   }
@@ -41,7 +48,6 @@ export class AdmisAdminComponent {
   }
 
   registrrarAdmin(){
-    console.log(this.username, this.nombre, this.password, this.ingreso, this.tipo);
     const data = {
       username: this.username,
       nombre: this.nombre,
@@ -52,7 +58,6 @@ export class AdmisAdminComponent {
     }
     this.authService.registrarAdmin(data).subscribe({
       next: (info) => {
-        console.log(info);
         this.getDataAdmins();
       }
     });
@@ -70,16 +75,57 @@ export class AdmisAdminComponent {
 
   getAdmin(admin){
     console.log("ID Admin",admin);
+    var div_role = document.getElementById("rol") as HTMLInputElement;
     this.authService.getAdminById(admin).subscribe({
       next: (info) => {
         console.log(info);
         this.username = info['username'];
-        this.nombre = info['nombre'];
+        this.nombre = info['name'];
         this.ingreso = info['ingreso'];
         this.tipo = info['tipo'];
-        this.rol = info['role'];
+        div_role.value = info['rol_name'];
+        this.estado = info['estado'];
+        this.rol_id = info['id_rol'];
       }
     });
+  }
+
+  getPages(){
+    return this.authService.getPaginas().subscribe({
+      next: (info) => {
+        this.paginas = info['paginas'];
+        //console.log(this.paginas);
+      }
+    });
+  }
+
+  getRoles(){
+    return this.authService.getRoles().subscribe({
+      next: (info) => {
+        this.roles = info['roles'];
+        console.log(this.roles);
+      }
+    });
+  }
+
+  updateAdmin(){
+    var fecha = document.getElementById("fecha") as HTMLInputElement;
+    var type_rol = document.getElementById("fecha") as HTMLInputElement;
+    const data = {
+      username: this.username,
+      nombre: this.nombre,
+      ingreso: this.ingreso,
+      tipo: this.tipo,
+      role: this.rol,
+      estado: this.estado,
+      type_role: type_rol.value
+    }
+    console.log(data);
+    /*this.authService.updateAdmin(data).subscribe({
+      next: (info) => {
+        this.getDataAdmins();
+      }
+    });*/
   }
 
 }

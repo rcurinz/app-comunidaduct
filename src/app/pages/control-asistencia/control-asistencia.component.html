@@ -1,11 +1,39 @@
 <div class="container">
-    <nav>
-        <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Administradores</a></li>
-            <li><a href="#">Reuniones</a></li>
-            <li><a href="#">Confesiones</a></li>
-            <li><a href="#">Salir</a></li>
-        </ul>
-    </nav>
+    <nav class="navbar" role="navigation" aria-label="main navigation" style="z-index: 550;">      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Reuniones
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" (click)="showOpcion(0)">
+                  Crear reunión
+                </a>
+                <a class="navbar-item">
+                  Listado de reuniones
+                </a>
+              </div>
+            </div>
+      
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Gestión de asistencias
+              </a>
+      
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  Detalles de reuniones
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </nav>   
+    <div>
+        <div *ngIf="opciones[0]">
+            <app-reunion-create></app-reunion-create>
+        </div>
+    </div>   
 </div>
+

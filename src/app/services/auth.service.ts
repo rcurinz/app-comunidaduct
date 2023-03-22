@@ -62,4 +62,16 @@ export class AuthService {
   getAdminById(id){
     return this.http.post(APIS['projects'] +'getadminbyid',{'id':id} , { context: checkToken() });
   }
+
+  getPaginas(){
+    return this.http.get(APIS['projects'] +'admins/getpaginas', { context: checkToken() });
+  }
+
+  getRoles(){
+    return this.http.get(APIS['projects'] +'admins/getroles', { context: checkToken() });
+  }
+
+  getCountForDay(){
+    return this.http.get(APIS['projects'] +'admins/getcountforday', { context: checkToken() });
+  }
 }
