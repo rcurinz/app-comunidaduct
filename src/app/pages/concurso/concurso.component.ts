@@ -88,6 +88,7 @@ export class ConcursoComponent {
     }
   }
 
+  //esto es un comentario
 
   accions(codigo){
     if (this.existToken()) {
