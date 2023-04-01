@@ -29,7 +29,6 @@ export class ConcursoComponent {
     if (this.id != null){
       //Si se ingresa con un sticker
       this.accions(this.id);
-      this.getAllMyStickers();
     } else  {
       //Si se ingresa sin sticker
       if (this.existToken()) {
@@ -88,18 +87,17 @@ export class ConcursoComponent {
     }
   }
 
-  //esto es un comentario
 
   accions(codigo){
     if (this.existToken()) {
       var codePLayer = this.getCodePlayer();
-      this.registerSticker(codigo, codePLayer);
       this.DatosPlayer();
+      this.registerSticker(codigo, codePLayer);
     } else {
       this.registrar(codigo);
-      this.getAllMyStickers();
       this.DatosPlayer();
     }
+    //this.getAllMyStickers();
   }
 
 
@@ -135,6 +133,9 @@ export class ConcursoComponent {
         var codSticker = info['codSticker'];
         this.addstickersInToken(codSticker);
         this.getAllMyStickers();
+      },
+      error : (err) => {
+        this.getAllMyStickers();
       }
     });
   }
@@ -143,6 +144,7 @@ export class ConcursoComponent {
     var codePlayer = this.getCodePlayer();
     this.authService.getAllMyStickers(codePlayer).subscribe({
       next: (info) => {
+        console.log(info);
         this.myStickers = info['stickers'];
       }
     });
