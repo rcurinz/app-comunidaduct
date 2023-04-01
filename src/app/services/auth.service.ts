@@ -74,4 +74,30 @@ export class AuthService {
   getCountForDay(){
     return this.http.get(APIS['projects'] +'admins/getcountforday', { context: checkToken() });
   }
+
+  /* APIS Concurso */
+
+  getAdminsCode(id){
+    return this.http.post(APIS['projects'] +'getadmincode', {'code':id});
+  }
+
+  //Registrar jugador 
+  RegisterEnConcurso(codeHash){
+    return this.http.post(APIS['projects'] +'registerconcurso', {codeHash:codeHash});
+  }
+
+  //Genera el id del jugador
+  generatePlayerCode(){
+    return this.http.get(APIS['projects'] +'generateplayercode');
+  }
+
+  //Registtra un sticker
+  RegisterSticker(codeHash, codePlayer){
+    return this.http.post(APIS['projects'] +'registersticker', {codeHash:codeHash, codePlayer:codePlayer});
+  }
+
+  getAllMyStickers(codePlayer){
+    return this.http.post(APIS['projects'] +'getallmystickers', {codePlayer:codePlayer});
+  }
+  /* Fin apis concurso */
 }

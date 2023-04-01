@@ -17,6 +17,59 @@
     --delay: .3s;
 }
 
+/* Popup*/
+
+.modal {
+    transition: opacity 0.5s ease-in-out;
+    position: fixed;
+    right: 10px;
+    left: 10px;
+    top: 10px;
+    padding: 10px;
+    padding-top:0px;
+    background-color: rgba(249, 249, 249, 0.8);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 9999;
+    display: block;
+    width: 200px;
+    height: 90px;
+    text-align: center;
+  }
+  .modal p {
+    margin: 0;
+    font-size: 14px;
+  }
+  .modal a {
+    color: #007bff;
+    text-decoration: underline;
+  }
+  .modal-close {
+    position: absolute;
+    background-color: rgba(10,10,10,.2);
+    top: 5px;
+    right: 5px;
+    //font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .alerta{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgba(244, 75, 24, 0.8);; 
+  }
+
+  .link-alert{
+    text-align: center;
+  }
+  .link-alert a{
+    text-decoration: none;
+    color: rgb(255, 0, 0);
+  }
+/*en popup */
+
+
 #contenedor {
     margin: 0;
     padding: 0;
@@ -25,7 +78,7 @@
     background: radial-gradient(ellipse at bottom, var(--bgColor) 0%, var(--bgColor2) 100%);
     /* background-image: url('https://bit.ly/3nFVqJh'); */
     opacity: 0;
-    animation: 1s ease-out var(--delay) 1 transitionAnimation; /* duration/timing-function/delay/iterations/name */
+    animation: 0.3s ease-out var(--delay) 1 transitionAnimation; /* duration/timing-function/delay/iterations/name */
     animation-fill-mode: forwards;
     background-repeat: no-repeat;
     background-size: cover;

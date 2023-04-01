@@ -24,4 +24,8 @@ export class RedesComponent implements OnInit {
       this.isDay = true;
     }
   }
+
+  close_popup(){
+    document.getElementById("modal-popup").style.display = "none";
+  }
 }

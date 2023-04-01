@@ -1,15 +1,16 @@
-
-    <title>ComunidadUCT | Linktree</title>
-    <!-- Favicon -->
-    <!--<link rel="icon" href="https://avatars0.githubusercontent.com/u/43749971" type="image/x-icon" />-->
-    <!-- Font Awesome icons -->
-
-    <!-- Core theme CSS -->
-
-    <div id="contenedor" [style.--bgColor]="isDay ? 'rgb(187, 160, 27)' : '#223344'"
+<div id="contenedor" [style.--bgColor]="isDay ? 'rgb(187, 160, 27)' : '#223344'"
     [style.--bgColor2]="isDay ? 'rgb(208, 37, 7)' : '#090a0f'"
     [style.--accentColor]="'#FFF'" 
     [style.--delay]="'.3s'">
+   
+    <div class="modal" id="modal-popup">
+      <span class="modal-close" (click)="close_popup()">&times;</span>
+      <a href="https://forms.gle/LccSAfZUjhDZiMVH8" style="text-decoration: none; color: black;">
+        <p class="alerta">Atencion!</p>
+        <p style="font-size: 14px;line-height: 1; letter-spacing: -0.5px; margin-top: 5px;">Estamos en busca de diseñador/a e informatico/a, ¿te interesa? Rellena el formulario<a href="https://forms.gle/LccSAfZUjhDZiMVH8" style="text-decoration: none; margin-left: 2px;"><strong style="color: red;">AQUI</strong></a></p>
+        <!--<p class ="link-alert"><a href="https://forms.gle/LccSAfZUjhDZiMVH8"><strong>ENTRA AQUI</strong></a></p>-->
+      </a>
+    </div>
     <!-- Parallax Pixel Background Animation -->
     <section class="animated-background">
       <div id="stars1"></div>
@@ -39,4 +40,4 @@
     <div id="hashtag">
       #BeHappy❤
     </div>
-  </div>
+</div>

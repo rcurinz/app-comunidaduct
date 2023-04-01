@@ -23,6 +23,7 @@ export class AdmisAdminComponent {
   rol: string;
   rol_id: string;
   estado: string;
+  fecha:Date;
 
   paginas: any;
   roles: any;
@@ -79,9 +80,11 @@ export class AdmisAdminComponent {
     this.authService.getAdminById(admin).subscribe({
       next: (info) => {
         console.log(info);
+        console.log(typeof(info['ingreso']));
         this.username = info['username'];
         this.nombre = info['name'];
         this.ingreso = info['ingreso'];
+        this.fecha =  new Date(info['ingreso']);
         this.tipo = info['tipo'];
         div_role.value = info['rol_name'];
         this.estado = info['estado'];

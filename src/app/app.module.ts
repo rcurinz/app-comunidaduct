@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -37,6 +38,7 @@ import { RutasComponent } from './pages/rutas/rutas.component';
 import {CalendarModule} from 'primeng/calendar';
 import { ControlAsistenciaComponent } from './pages/control-asistencia/control-asistencia.component';
 import { ReunionCreateComponent } from './components/reunion-create/reunion-create.component';
+import { ConcursoComponent } from './pages/concurso/concurso.component';
 
 
 
@@ -59,10 +61,12 @@ import { ReunionCreateComponent } from './components/reunion-create/reunion-crea
     AdmisAdminComponent,
     RutasComponent,
     ControlAsistenciaComponent,
-    ReunionCreateComponent
+    ReunionCreateComponent,
+    ConcursoComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,

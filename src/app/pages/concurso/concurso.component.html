@@ -1,0 +1,58 @@
+<div class="container">
+    <div *ngIf="jugar">
+        <article class="message is-primary">
+            <div class="message-header">
+              <p>Mis datos</p>
+            </div>
+            <div class="message-body">
+                <div class="columns">
+                    <div class="column">
+                        Id jugador
+                    </div>
+                    <div class="column">
+                        {{idPlayer}}
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        Codigo seguridad
+                    </div>
+                    <div class="column">
+                        {{codePlayerSecurity}}
+                    </div>
+                </div>
+            </div>
+          </article>
+          <article class="message is-primary">
+            <div class="message-header">
+              <p>Stikers ecnontrados</p>
+            </div>
+            <div class="message-body">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Codigo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of myStickers">
+                            <td>Real Madrid</td>
+                            <td style="overflow-x: scroll;">{{item.id_sticker}}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+          </article>
+    </div>
+    <div *ngIf="!jugar">
+        <article class="message is-primary">
+            <div class="message-header">
+              <p>Atencion</p>
+            </div>
+            <div class="message-body">
+              {{message}}
+            </div>
+          </article>
+    </div>
+</div>

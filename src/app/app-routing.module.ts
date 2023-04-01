@@ -14,6 +14,7 @@ import { SisComponent } from './pages/sis/sis.component';
 import { AdmisAdminComponent } from './pages/admis-admin/admis-admin.component';
 import { RutasComponent } from './pages/rutas/rutas.component';
 import { ControlAsistenciaComponent } from './pages/control-asistencia/control-asistencia.component';
+import { ConcursoComponent } from './pages/concurso/concurso.component';
 
 
 import { AuthGuard } from '@guards/auth.guard';
@@ -28,6 +29,8 @@ const routes: Routes = [
   { path: 'select-admins', component: SelectAdminsComponent},
   { path: 'minecraft', component: MinecraftComponent},
   { path: 'count-admins', component: CountAdminsComponent},
+  { path: 'concurso/:id', component: ConcursoComponent },
+  { path: 'concurso', component: ConcursoComponent },
   { path: 'rutas', component: RutasComponent},
   { 
     path: 'admins',
@@ -43,6 +46,7 @@ const routes: Routes = [
       { path: 'admins-admin', component: AdmisAdminComponent},
       { path: 'reuniones',  component:  ControlAsistenciaComponent}
   ]
+  
 },
   { path: '**',  component:  PageNotFoundComponent}
 ];
