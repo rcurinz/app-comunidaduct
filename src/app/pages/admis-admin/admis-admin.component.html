@@ -131,7 +131,7 @@
                 Nickname
             </div>
             <div class="column">
-                <input class="input" type="text"  name="username" [(ngModel)]="username" placeholder="Text input">
+                <input class="input" type="text"  name="username" [(ngModel)]="admin.username" placeholder="Text input">
             </div>
         </div>
         <div class="columns">
@@ -139,7 +139,7 @@
                 Nombre
             </div>
             <div class="column">
-                <input class="input" type="text" name="name"  [(ngModel)]="nombre" placeholder="Text input">
+                <input class="input" type="text" name="name"  [(ngModel)]="admin.nombre" placeholder="Text input">
             </div>
         </div>
         <div class="columns">
@@ -147,7 +147,7 @@
                 Ingreso
             </div>
             <div class="column">
-                <input class="input" type="date" id="edit-fecha" [value]="ingreso  | date:'yyyy-MM-dd'" placeholder="Fecha" >
+                <input class="input" type="date" id="edit-fecha" [value]="admin.ingreso| date:'yyyy-MM-dd'" placeholder="Fecha" >
             </div>
         </div>
         <div class="columns">
@@ -156,8 +156,8 @@
             </div>
             <div class="column">
                 <div class="select">
-                    <select [(ngModel)]="tipo" [value]="tipo">
-                      <option *ngFor="let p of paginas" value="{{p.id}}" >{{p.nombre}}</option>
+                    <select [(ngModel)]="admin.pagina" >
+                      <option *ngFor="let p of paginas" [value] ="p.id" >{{p.nombre}}</option>
                     </select>
                   </div>
             </div>
@@ -169,7 +169,7 @@
             <div class="column">
                 <div class="select">
                     <select id="rol" value="">
-                        <option *ngFor="let r of roles" value="{{r.id}}">{{r.nombre}}</option>
+                        <option *ngFor="let r of roles" value="{{r.id}}" [attr.selected]="rol == r.nombre">{{r.nombre}}</option>
                     </select>
                 </div>
             </div>

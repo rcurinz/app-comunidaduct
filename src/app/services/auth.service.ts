@@ -99,5 +99,9 @@ export class AuthService {
   getAllMyStickers(codePlayer){
     return this.http.post(APIS['projects'] +'getallmystickers', {codePlayer:codePlayer});
   }
+
+  getJugadores(){
+    return this.http.get(APIS['projects'] +'getjugadores');
+  }
   /* Fin apis concurso */
 }

@@ -39,7 +39,10 @@ import {CalendarModule} from 'primeng/calendar';
 import { ControlAsistenciaComponent } from './pages/control-asistencia/control-asistencia.component';
 import { ReunionCreateComponent } from './components/reunion-create/reunion-create.component';
 import { ConcursoComponent } from './pages/concurso/concurso.component';
+import { SorteosComponent } from './pages/sorteos/sorteos.component';
 
+
+import {DataTablesModule} from 'angular-datatables';
 
 
 @NgModule({
@@ -62,7 +65,8 @@ import { ConcursoComponent } from './pages/concurso/concurso.component';
     RutasComponent,
     ControlAsistenciaComponent,
     ReunionCreateComponent,
-    ConcursoComponent
+    ConcursoComponent,
+    SorteosComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,8 @@ import { ConcursoComponent } from './pages/concurso/concurso.component';
     DialogModule,
     DataViewModule,
     CalendarModule,
-    MenubarModule
+    MenubarModule,
+    DataTablesModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

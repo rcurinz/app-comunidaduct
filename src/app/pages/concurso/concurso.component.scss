@@ -1,0 +1,21 @@
+@media screen and (max-width: 750px) {
+  .concurso {
+    .concurso__container {
+      .concurso__container__content {
+        .concurso__container__content__title {
+          font-size: 2.5rem;
+        }
+        .concurso__container__content__description {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .container{
+    min-width: 350px;
+  }
+  .message-body{
+    overflow-x: scroll;
+  }
+}

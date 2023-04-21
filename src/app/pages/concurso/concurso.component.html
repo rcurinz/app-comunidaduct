@@ -2,10 +2,10 @@
     <div *ngIf="jugar">
         <article class="message is-primary">
             <div class="message-header">
-              <p>Mis datos</p>
+              <p>Mis datos:</p>
             </div>
             <div class="message-body">
-                <div class="columns">
+                <div class="columns is-mobile">
                     <div class="column">
                         Id jugador
                     </div>
@@ -13,19 +13,22 @@
                         {{idPlayer}}
                     </div>
                 </div>
-                <div class="columns">
+                <div class="columns is-mobile">
                     <div class="column">
                         Codigo seguridad
                     </div>
                     <div class="column">
-                        {{codePlayerSecurity}}
+                      {{ hiddenCodePlayerSecurity }}
+                      <button class="button" (click)="showCode()" type="button" style="height: auto; padding-top: 2px; padding-bottom: 2px;">
+                        <i class="fas fa-eye"></i>
+                      </button>
                     </div>
                 </div>
             </div>
           </article>
           <article class="message is-primary">
             <div class="message-header">
-              <p>Stikers ecnontrados</p>
+              <p>Stikers ecnontrados: {{cantidadStickers}} / 21</p>
             </div>
             <div class="message-body">
                 <table class="table">

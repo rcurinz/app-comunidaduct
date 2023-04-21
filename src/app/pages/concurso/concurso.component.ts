@@ -16,6 +16,8 @@ export class ConcursoComponent {
   codePlayerSecurity="";
   message = "Primero encuentra un sticker valido para comenzar a jugar";
   jugar = false;
+  cantidadStickers = 0;
+  hiddenCodePlayerSecurity;
 
   constructor(private route: ActivatedRoute,private tokenService: TokenService, private authService: AuthService) { }
 
@@ -76,6 +78,7 @@ export class ConcursoComponent {
 
   getCodeSecurity(){
     var tk = JSON.parse(this.tokenService.getTokenConcurso())
+    this.hiddenCodePlayerSecurity = '*'.repeat(tk.codSecurity.length);
     return tk.codSecurity;
   }
 
@@ -144,8 +147,8 @@ export class ConcursoComponent {
     var codePlayer = this.getCodePlayer();
     this.authService.getAllMyStickers(codePlayer).subscribe({
       next: (info) => {
-        console.log(info);
         this.myStickers = info['stickers'];
+        this.cantidadStickers = this.myStickers.length;
       }
     });
   }
@@ -157,5 +160,11 @@ export class ConcursoComponent {
     this.codePlayerSecurity = this.getCodeSecurity()
   }
 
+  showCode() {
+    setTimeout(() => {
+      this.hiddenCodePlayerSecurity = '*'.repeat(this.codePlayerSecurity.length);
+    }, 3000);
+    this.hiddenCodePlayerSecurity = this.codePlayerSecurity;
+  }
 
 }

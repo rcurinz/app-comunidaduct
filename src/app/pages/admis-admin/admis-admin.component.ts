@@ -28,6 +28,18 @@ export class AdmisAdminComponent {
   paginas: any;
   roles: any;
 
+  admin = {
+    username: '',
+    nombre: '',
+    ingreso: '',
+    fecha: '',
+    tipo: '',
+    rol: '',
+    estado: '',
+    rol_id: '',
+    pagina : ''
+  }
+
 
   ngOnInit(): void {
     this.getDataAdmins();
@@ -76,19 +88,19 @@ export class AdmisAdminComponent {
 
   getAdmin(admin){
     console.log("ID Admin",admin);
-    var div_role = document.getElementById("rol") as HTMLInputElement;
+    //var div_role = document.getElementById("rol") as HTMLInputElement;
     this.authService.getAdminById(admin).subscribe({
       next: (info) => {
         console.log(info);
-        console.log(typeof(info['ingreso']));
-        this.username = info['username'];
-        this.nombre = info['name'];
-        this.ingreso = info['ingreso'];
-        this.fecha =  new Date(info['ingreso']);
-        this.tipo = info['tipo'];
-        div_role.value = info['rol_name'];
-        this.estado = info['estado'];
-        this.rol_id = info['id_rol'];
+        this.admin.username = info['username'];
+        this.admin.nombre = info['name'];
+        this.admin.ingreso = new Date(info['ingreso']).toString();
+        //this.admin.fecha =  new Date(info['ingreso']);
+        this.admin.tipo = info['tipo'];
+        this.admin.rol = info['rol_name'];
+        this.admin.estado = info['estado'];
+        this.admin.rol_id = info['id_rol'];
+        this.admin.pagina = info['nombre_pagina'];
       }
     });
   }
