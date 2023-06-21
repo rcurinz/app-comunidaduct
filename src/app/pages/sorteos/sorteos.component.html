@@ -21,9 +21,32 @@
                     <td>{{i.cod_security}}</td>
                     <td>{{i.count_stickers}}</td>
                     <td>{{i.created_at | date:'dd-MM-yyyy'}}</td>
-                    <td><button type="button" class="button is-info">Detalles</button></td>
+                    <td><button type="button" class="button is-info"  (click)="showDialog(i.id)">Detalles</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
+<p-dialog header="Stickers encontrados" [(visible)]="visible"  [style]="{ width: '80vw', height: '500px' }">
+    <table 
+    id="actores-table"
+    datatable
+    *ngIf="jugador"
+    [dtOptions]="dtOptions"
+    class="table display datatable-table is-fullwidth has-text-gray" >
+    <thead>
+        <tr>
+            <th>admin</th>
+            <th>fecha escaneado</th>
+            <th>Cod Sticker</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of jugador">
+            <th>{{i.nickname}}</th>
+            <td>{{i.created_at}}</td>
+            <td>{{i.id_sticker}}</td>
+        </tr>
+    </tbody>
+</table>
+</p-dialog>

@@ -103,5 +103,15 @@ export class AuthService {
   getJugadores(){
     return this.http.get(APIS['projects'] +'getjugadores');
   }
+
+  getJugadorById(id){
+    return this.http.post(APIS['projects'] +'getjugadorbyid', {'id':id});
+  }
+
   /* Fin apis concurso */
+
+  /* Activacion Modal */
+  getModal(){
+    return this.http.get(APIS['projects'] +'getmodal');
+  }
 }

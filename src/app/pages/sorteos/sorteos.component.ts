@@ -9,7 +9,9 @@ import { AuthService } from "@services/auth.service"
 export class SorteosComponent {
 
   jugadores;
+  jugador;
   dtOptions;
+  visible: boolean = false;
 
   constructor(private authService: AuthService) { }
 
@@ -35,6 +37,20 @@ export class SorteosComponent {
       console.log(res);
       this.jugadores = res['jugadores'];
     });
+  }
+
+  showDialog(id) {
+    this.getJugadorById(id);
+    this.visible = true;
+  }
+
+  getJugadorById(id){
+    this.authService.getJugadorById(id).subscribe((res:any) => {
+      console.log(res);
+      this.jugador = res['stickers'];
+      console.log(this.jugador);
+    });
+
   }
 
 }

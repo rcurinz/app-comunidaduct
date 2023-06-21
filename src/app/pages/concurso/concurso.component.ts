@@ -18,6 +18,7 @@ export class ConcursoComponent {
   jugar = false;
   cantidadStickers = 0;
   hiddenCodePlayerSecurity;
+  visible: boolean = false;
 
   constructor(private route: ActivatedRoute,private tokenService: TokenService, private authService: AuthService) { }
 
@@ -126,6 +127,15 @@ export class ConcursoComponent {
         this.addstickersInToken(codSticker);
         this.DatosPlayer();
         this.getAllMyStickers();
+      },
+      error : (err) => {
+        if (err.status === 403) { // Error 403 Forbidden
+          const contenidoError = err.error; // Aquí debería estar el cuerpo JSON de la respuesta
+          if (contenidoError.finalizado) {
+            this.visible = true;
+            this.message = "El concurso ha finalizado";
+          }
+        }
       }
     });
   }
@@ -149,6 +159,15 @@ export class ConcursoComponent {
       next: (info) => {
         this.myStickers = info['stickers'];
         this.cantidadStickers = this.myStickers.length;
+      },
+      error : (err) => {
+        if (err.status === 403) { // Error 403 Forbidden
+          const contenidoError = err.error; // Aquí debería estar el cuerpo JSON de la respuesta
+          if (contenidoError.finalizado) {
+            this.visible = true;
+            this.message = "El concurso ha finalizado";
+          }
+        }
       }
     });
   }
@@ -167,4 +186,8 @@ export class ConcursoComponent {
     this.hiddenCodePlayerSecurity = this.codePlayerSecurity;
   }
 
+
+  showDialog() {
+    this.visible = true;
+  }
 }

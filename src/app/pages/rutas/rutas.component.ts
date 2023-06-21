@@ -38,7 +38,6 @@ export class RutasComponent {
 
     this.markCampus();
     // this.marksLinea10();  POsiblemente ya no existe esta linea
-
   }
 
   loadGeoJSON(rute, color) {

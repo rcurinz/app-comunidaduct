@@ -6,7 +6,7 @@
             </div>
             <div class="message-body">
                 <div class="columns is-mobile">
-                    <div class="column">
+                    <div class="column is-one-fifth">
                         Id jugador
                     </div>
                     <div class="column">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="columns is-mobile">
-                    <div class="column">
+                    <div class="column is-one-fifth">
                         Codigo seguridad
                     </div>
                     <div class="column">
@@ -28,7 +28,7 @@
           </article>
           <article class="message is-primary">
             <div class="message-header">
-              <p>Stikers ecnontrados: {{cantidadStickers}} / 21</p>
+              <p>Stickers encontrados: {{cantidadStickers}} / 16</p>
             </div>
             <div class="message-body">
                 <table class="table">
@@ -59,3 +59,8 @@
           </article>
     </div>
 </div>
+
+
+<p-dialog header="Concurso finalizado" [(visible)]="visible"  [style]="{ width: '30vw', height: '200px' }">
+  <span style="color: red;"> El concurso ha finalizado</span><p>Gracias por participar</p>
+</p-dialog>

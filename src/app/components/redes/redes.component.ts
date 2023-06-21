@@ -18,7 +18,7 @@ export class RedesComponent implements OnInit {
   ngOnInit(): void {
     //si la hora es mayor a 8am y menor a 8pm es dia
     const hora = new Date().getHours();
-    if (hora < 8 || hora > 20) {
+    if (hora < 8 || hora > 18) {
       this.isDay = false;
     } else {
       this.isDay = true;
