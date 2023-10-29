@@ -139,4 +139,8 @@ export class AuthService {
   getImageForId(id){
     return this.http.get(APIS['projects'] +'getimage/'+id);
   }
+
+  getCategorys(){
+    return this.http.get(APIS['projects'] +'getcategory');
+  }
 }

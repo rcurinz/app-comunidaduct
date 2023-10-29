@@ -57,6 +57,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { DragDropModule } from 'primeng/dragdrop';
 import { PickListModule } from 'primeng/picklist';
+import { ToastModule } from 'primeng/toast';
 
 import {DataTablesModule} from 'angular-datatables';
 
@@ -117,7 +118,8 @@ import {DataTablesModule} from 'angular-datatables';
     FileUploadModule,
     ProgressSpinnerModule,
     DragDropModule,
-    PickListModule
+    PickListModule,
+    ToastModule
 
   ],
   providers: [{

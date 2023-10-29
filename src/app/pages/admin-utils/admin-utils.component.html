@@ -31,37 +31,51 @@
     <p-accordion [activeIndex]="1">
         <p-accordionTab header="Subida de stickers">
             <div class="columns">
-                <div class="column">
-                    <p-fileUpload name="myfile[]" chooseLabel="Añadir sticker" (onSelect)="onUpload($event)" [multiple]="false" accept="image/*">
+                <div class="column is-two-fifths">
+                    <p-fileUpload name="myfile[]" chooseLabel="Añadir sticker" (onSelect)="onUpload($event)" [multiple]="false" accept="image/webp">
                         <ng-template pTemplate="content" let-files>
                             <p-card header="Previsualizacion">
-                                <p-image src="{{imgUrl}}" alt="Image" width="200"></p-image>
+                                <p-image src="{{imgUrl}}" width="200"></p-image>
                             </p-card>
                         </ng-template>
                     </p-fileUpload>
                 </div>
                 <div class="column" style="text-align: center;">
                     <p-card header="Añadir categorias">
-                        <p-pickList [source]="sourceProducts" [target]="targetProducts" sourceHeader="Available" targetHeader="Selected" [dragdrop]="true" [responsive]="true" 
-                            [sourceStyle]="{ height: '30rem' }" [targetStyle]="{ height: '30rem' }" breakpoint="1400px">
+                        <p-pickList [source]="sourceProducts" filterBy="name" [target]="targetProducts" sourceHeader="Habilitadas" targetHeader="Seleccionadas" [dragdrop]="true" [responsive]="true" 
+                            [sourceStyle]="{ height: '20rem' }" [targetStyle]="{ height: '20rem' }" breakpoint="1400px" (onItemClick)="test()">
                             <ng-template let-product pTemplate="item">
                                 <div class="flex flex-wrap p-2 align-items-center gap-3">
-                                    <img class="w-4rem shadow-2 flex-shrink-0 border-round" src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" alt="{item.name}" />
+                                    <!--<img class="w-4rem shadow-2 flex-shrink-0 border-round" src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" alt="{item.name}" />-->
                                     <div class="flex-1 flex flex-column gap-2">
                                         <span class="font-bold">{{ product.name }}</span>
-                                        <div class="flex align-items-center gap-2">
-                                            <i class="pi pi-tag text-sm"></i>
-                                            <span>{{ product.category }}</span>
-                                        </div>
                                     </div>
-                                    <span class="font-bold text-900">{{ '$' + product.price }}</span>
                                 </div>
                             </ng-template>
                         </p-pickList>
                     </p-card>
                 </div>
             </div>
-
+            <div class="Columns" >
+                <div class="column" style="display: flex; justify-content: center;">
+                    <p-button label="Subir sticker" (click)="sendSticker();showDialog()"></p-button>
+                </div>
+            </div>
         </p-accordionTab>
     </p-accordion>
 </div>
+
+<p-dialog header="Confirmacion" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <div class="columns">
+        <div class="column">
+            <p-card header="Previsualizacion">
+                <p-image src="{{imgUrl}}" width="200"></p-image>
+            </p-card>
+        </div>
+        <div class="column">
+            <p-card header="Categorias">
+                
+            </p-card>
+        </div>
+    </div>
+</p-dialog>
