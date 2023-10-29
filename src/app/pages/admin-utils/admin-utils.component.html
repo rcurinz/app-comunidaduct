@@ -1,0 +1,52 @@
+<div class="container" >
+    <p-accordion [activeIndex]="1">
+        <p-accordionTab header="Mensaje en el menu de las paginas">
+            <div class="columns">
+                <div class="column">
+                    Activar Modal
+                </div>
+                <div class="column">
+                    <p-inputSwitch (onChange)="setStatusModal()" [(ngModel)]="show_modal"></p-inputSwitch>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    Mensaje
+                </div>
+                <div class="column">
+                    <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="message"></textarea>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    Url
+                </div>
+                <div class="column">
+                    <input type="text" pInputText [(ngModel)]="url" />
+                </div>
+            </div>
+            <p-button label="Guardar" (onClick)="setMessage()"></p-button>
+        </p-accordionTab>
+    </p-accordion>
+    <p-accordion [activeIndex]="1">
+        <p-accordionTab header="Subida de stickers">
+            <div class="columns">
+                <div class="column">
+                    <p-fileUpload name="myfile[]" chooseLabel="Añadir sticker" (onSelect)="onUpload($event)" [multiple]="false" accept="image/*">
+                        <ng-template pTemplate="content" let-files>
+                            <p-card header="Previsualizacion">
+                                <p-image src="{{imgUrl}}" alt="Image" width="200"></p-image>
+                            </p-card>
+                        </ng-template>
+                    </p-fileUpload>
+                </div>
+                <div class="column" style="text-align: center;">
+                    <p-card header="Añadir categorias">
+                        
+                    </p-card>
+                </div>
+            </div>
+
+        </p-accordionTab>
+    </p-accordion>
+</div>

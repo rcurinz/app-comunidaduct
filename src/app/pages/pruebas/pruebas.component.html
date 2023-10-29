@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Desplazamiento de Imágenes</title>
+</head>
+    <body>
+        <div *ngFor="let image of images; let i = index" class="image-container" [ngStyle]="{'left': getLeftPosition(i)}">
+            <img [src]="image.src" [alt]="image.alt" [style.width]="image.size" [style.height]="image.size">
+        </div>
+    </body>
+</html>
+

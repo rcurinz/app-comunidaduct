@@ -1,0 +1,16 @@
+
+.image-container {
+    position: absolute;
+    animation: slideDown 10s linear infinite;
+    opacity: 0;
+  }
+  
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 1;
+    }
+  }

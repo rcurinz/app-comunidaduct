@@ -1,0 +1,38 @@
+<div class="container">
+    <p-sidebar [(visible)]="sidebarVisible">
+        Categorias
+        <div *ngFor="let category of categories" class="field-checkbox">
+            <p-checkbox name="group" [value]="category" [(ngModel)]="selectedCategories" [inputId]="category.key"></p-checkbox>
+            <label [for]="category.key">{{ category.name }}</label>
+        </div>
+
+        Tipo de sticker
+        <div *ngFor="let types_img of types_images" class="field-checkbox">
+            <p-checkbox name="group" [value]="types_img" [(ngModel)]="selectedTypes" [inputId]="types_img.key"></p-checkbox>
+            <label [for]="types_img.key">{{ types_img.name }}</label>
+        </div>
+    </p-sidebar>
+    <p-button (click)="sidebarVisible = true" label="Filtros" styleClass="p-button-sm" ></p-button>
+
+
+    
+    <div class="card" >
+        <p-progressSpinner *ngIf="!showTable" [ngClass]="'spinner-class'"></p-progressSpinner>
+        <p-dataView *ngIf="showTable" #dv [value]="images" [layout]="layout" [rows]="24" [paginator]="true">
+            <ng-template let-product pTemplate="gridItem">
+                <div class="col-6 sm:col-4 lg:col-12 xl:col-2 p-2">
+                    <div class="p-4 border-1 surface-border surface-card border-round">
+                        <div class="flex flex-column align-items-center gap-1 py-1">
+                            <img class="w-12 shadow-2 border-round" [src]="'data:image/webp;base64,' + product.img" [alt]="product.name" />
+                            <div class="text-2xs font-bold">{{ product.name }}</div>
+                            <div class="text-2xs font-bold">Descargas: {{ product.descargas }}</div>
+                        </div>
+                        <div class="flex flex-column align-items-center justify-content-between">
+                            <button pButton pRipple label="Descargar" (click)="getById(product.id)" class="p-button-success"></button>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-dataView>
+    </div>
+</div>

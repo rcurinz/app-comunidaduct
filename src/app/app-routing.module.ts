@@ -16,10 +16,13 @@ import { RutasComponent } from './pages/rutas/rutas.component';
 import { ControlAsistenciaComponent } from './pages/control-asistencia/control-asistencia.component';
 import { ConcursoComponent } from './pages/concurso/concurso.component';
 import { SorteosComponent } from './pages/sorteos/sorteos.component';
+import { AdminUtilsComponent } from './pages/admin-utils/admin-utils.component';
+import {StickersPageComponent} from './pages/stickers-page/stickers-page.component';
 
 
 import { AuthGuard } from '@guards/auth.guard';
 import { RedirectGuard } from '@guards/redirect.guard';
+import { PruebasComponent } from './pages/pruebas/pruebas.component';
 
 const routes: Routes = [
   { path: '', component: RedesComponent, pathMatch: 'full' },
@@ -30,9 +33,11 @@ const routes: Routes = [
   { path: 'select-admins', component: SelectAdminsComponent},
   { path: 'minecraft', component: MinecraftComponent},
   { path: 'count-admins', component: CountAdminsComponent},
-  { path: 'concurso/:id', component: ConcursoComponent },
-  { path: 'concurso', component: ConcursoComponent },
+  { path: 'concurso/:id', component: RedesComponent },
+  { path: 'concurso', component: RedesComponent },
   { path: 'rutas', component: RutasComponent},
+  { path: 'pruebas', component: PruebasComponent},
+  { path: 'stickers', component: StickersPageComponent},
   { 
     path: 'admins',
     canActivate: [RedirectGuard], 
@@ -46,7 +51,8 @@ const routes: Routes = [
       { path: 'admins-dash', component: AdminsDashComponent},
       { path: 'admins-admin', component: AdmisAdminComponent},
       { path: 'reuniones',  component:  ControlAsistenciaComponent},
-      { path: 'sorteos',  component:  SorteosComponent}
+      { path: 'sorteos',  component:  SorteosComponent},
+      { path: 'utilidades',  component:  AdminUtilsComponent}
   ]
   
 },

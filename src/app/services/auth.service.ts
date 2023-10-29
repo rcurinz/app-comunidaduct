@@ -111,7 +111,32 @@ export class AuthService {
   /* Fin apis concurso */
 
   /* Activacion Modal */
-  getModal(){
-    return this.http.get(APIS['projects'] +'getmodal');
+  getOption(data){
+    return this.http.post(APIS['projects'] +'getoption', data, { context: checkToken() });
+  }
+
+  setOption(data){
+    return this.http.post(APIS['projects'] +'setoption',data, { context: checkToken() });
+  }
+
+  // Mensage del modal
+
+  setMessage(data){
+    return this.http.post(APIS['projects'] +'setmessage',data, { context: checkToken() });
+  }
+
+  getMessage(data){
+    return this.http.post(APIS['projects'] +'getmessage',data, { context: checkToken() });
+  }
+
+  /* Fin Activacion Modal */
+
+  /* apis para las imagenes de stickers */
+  getAllImages(){
+    return this.http.get(APIS['projects'] +'getimages');
+  }
+
+  getImageForId(id){
+    return this.http.get(APIS['projects'] +'getimage/'+id);
   }
 }
