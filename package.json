@@ -59,11 +59,11 @@
     "typescript-cookie": "^1.0.4",
     "url": "^0.11.0",
     "util": "^0.12.5",
-    "zone.js": "^0.14.1"
+    "zone.js": "^0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.1.2",
-    "@angular/cli": "~15.1.2",
+    "@angular/cli": "^16.2.8",
     "@angular/compiler-cli": "^15.1.1",
     "@types/jasmine": "~4.0.0",
     "jasmine-core": "~4.3.0",
