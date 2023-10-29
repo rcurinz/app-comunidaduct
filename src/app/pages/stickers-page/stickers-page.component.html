@@ -18,7 +18,7 @@
     
     <div class="card" >
         <p-progressSpinner *ngIf="!showTable" [ngClass]="'spinner-class'"></p-progressSpinner>
-        <p-dataView *ngIf="showTable" #dv [value]="images" [layout]="layout" [rows]="24" [paginator]="true">
+        <p-dataView *ngIf="showTable" #dv [value]="images" [layout]="'grid'" [rows]="24" [paginator]="true">
             <ng-template let-product pTemplate="gridItem">
                 <div class="col-6 sm:col-4 lg:col-12 xl:col-2 p-2">
                     <div class="p-4 border-1 surface-border surface-card border-round">
