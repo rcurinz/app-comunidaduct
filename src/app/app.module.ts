@@ -58,6 +58,10 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { DragDropModule } from 'primeng/dragdrop';
 import { PickListModule } from 'primeng/picklist';
 import { ToastModule } from 'primeng/toast';
+import { ChipModule } from 'primeng/chip';
+import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 import {DataTablesModule} from 'angular-datatables';
 
@@ -119,8 +123,10 @@ import {DataTablesModule} from 'angular-datatables';
     ProgressSpinnerModule,
     DragDropModule,
     PickListModule,
-    ToastModule
-
+    ToastModule,
+    ChipModule,
+    TableModule,
+    DropdownModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

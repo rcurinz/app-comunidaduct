@@ -143,4 +143,24 @@ export class AuthService {
   getCategorys(){
     return this.http.get(APIS['projects'] +'getcategory');
   }
+
+  addCategory(data){
+    return this.http.post(APIS['projects'] +'addcategory', data);
+  }
+
+  updateCategory(data){
+    return this.http.post(APIS['projects'] +'updatecategory', data);
+  }
+
+  deleteCategory(data){
+    data = {
+      id: data
+    }
+    return this.http.post(APIS['projects'] +'delcategory', data);
+  }
+
+  AddSticker(data){
+    console.log(data);
+    return this.http.post(APIS['projects'] +'addsticker', data);
+  }
 }

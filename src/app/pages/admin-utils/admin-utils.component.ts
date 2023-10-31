@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,  ElementRef, ViewChild  } from '@angular/core';
 import { AuthService } from '@services/auth.service';
 import { MessageService } from 'primeng/api';
+import { FileUpload } from 'primeng/fileupload';
 
 interface UploadEvent {
   originalEvent: Event;
@@ -17,13 +18,27 @@ export class AdminUtilsComponent {
 
   show_modal = false;
   message = '';
-  url = '';
+  url = null;
   imgUrl;
   sourceProducts ;
   targetProducts = [];
   visible: boolean = false;
+  visible2: boolean = false;
+  uploadedFiles: any[] = [];
+  FileInput;
+  new_category = '';
+  statuses = [
+    { label: 'In Stock', value: 'INSTOCK' },
+    { label: 'Low Stock', value: 'LOWSTOCK' },
+    { label: 'Out of Stock', value: 'OUTOFSTOCK' }
+  ];
+  imgUrl_bin;
+  CategorysChange = [];
+  formData = new FormData();
 
-  constructor(private authService: AuthService, private messageService: MessageService) { }
+  @ViewChild('fileUpload', { static: true }) fileUpload: FileUpload;
+
+  constructor(private authService: AuthService, private messageService: MessageService, private elementRef: ElementRef) { }
 
   ngOnInit(): void {
     this.getCategorys();
@@ -43,7 +58,6 @@ export class AdminUtilsComponent {
         console.log(err);
       }
     });
-
   }
 
   setMessage(){
@@ -75,9 +89,10 @@ export class AdminUtilsComponent {
     });
   }
 
-  onUpload(event) {
+  onUpload1(event) {
     const file = event.files[0];
-
+  
+    this.formData.append('image', file);
     // Creamos un nuevo elemento `<img>`
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -88,15 +103,13 @@ export class AdminUtilsComponent {
       const result = e.target.result;
   
       if (typeof result === 'string') {
-        // Si result es una cadena, es una URL de datos base64
-        // Elimina el encabezado de la URL de datos
         this.imgUrl = result;
       }
     };
   }
 
-  test(){
-    console.log(this.targetProducts);
+  test(event){
+    console.log("send!!!!!");
   }
 
   getCategorys(){
@@ -111,21 +124,132 @@ export class AdminUtilsComponent {
   }
 
   sendSticker(){
-    console.log(this.targetProducts);
-    console.log(this.imgUrl);
-    if (this.targetProducts.length > 0 && this.imgUrl != ''){
-      this.show(true);
+    var data = {
+      img: this.imgUrl_bin,
+      category: this.targetProducts
     }
+    this.formData.append('category', JSON.stringify(this.targetProducts));
+    this.authService.AddSticker(this.formData).subscribe({
+      next: (info) => {
+        this.show("Imagen subida", "success", "Correcto");
+        this.visible = false;
+        this.imgUrl = null;
+        this.formData = new FormData();
+        this.getCategorys();
+        this.clearData()
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+    
   }
 
   showDialog() {
-    this.visible = true;
+    if (this.targetProducts.length > 0 && this.imgUrl != null){
+      this.visible = true;
+    } else {
+      this.show("Debes seleccionar al menos una imagen y una categoria", "error", "Error");
+    }
   }
 
-show(isSuccess: boolean) {
-  if(isSuccess){this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });}
-  else{this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });}
-  
-}
+  show(message: string, severity: string = 'success', summary: string = 'Correcto' ) {
+    this.messageService.add({ severity: severity, summary: summary, detail: message });
+  }
 
+  checkImg(event){
+    this.cancelBtn();
+    /*const file = event.files.length;
+    if (file == 0){
+      this.imgUrl = null;
+      this.cancelBtn();
+    }*/
+  }
+
+  cancelBtn(){
+    var temp = this.sourceProducts.concat(this.targetProducts);
+    this.sourceProducts = temp;
+    this.targetProducts = [];
+  }
+
+
+  clearData(){
+    this.fileUpload.clear();
+  }
+
+  showdialog2(){
+    this.visible2 = true;
+  }
+
+  validateCategory(){
+    var cat = this.new_category;
+    var temp = this.sourceProducts.concat(this.targetProducts);
+    let encontrado = false;
+    for (const objeto of temp) {
+      if (objeto.name.toLowerCase() === cat) {
+        encontrado = true;
+        break;
+      }
+    }
+    if (encontrado){
+      this.show("La categoria ya existe", "error", "Error");
+    } else {
+      this.addCategory();
+    }
+  }
+
+  updateCategory(category){
+    this.authService.updateCategory(category).subscribe({
+      next: (info) => {
+        this.show("Categoria actualizada", "success", "Correcto");
+        this.getCategorys();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+
+  addCategory(){
+    var cat = this.new_category;
+    const data = {
+      name: cat
+    };
+    this.authService.addCategory(data).subscribe({
+      next: (info) => {
+        this.show("Categoria añadida", "success", "Correcto");
+        this.visible2 = false;
+        this.new_category = '';
+        this.getCategorys();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  onRowEditInit(product) {
+    //console.log(product);
+  }
+
+  onRowEditSave(product){
+    this.updateCategory(product);
+  }
+
+  onRowEditCancel(product, ri){
+    //console.log(product);
+  }
+
+  onRowEditDelete(product, ri){
+    this.authService.deleteCategory(product.id).subscribe({
+      next: (info) => {
+        this.show("Categoria eliminada", "success", "Correcto");
+        this.getCategorys();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
 }
