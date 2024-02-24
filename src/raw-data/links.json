@@ -2,13 +2,19 @@
     "redes_sociales": [
         {
             "nombre": "Envia tus confesiones aqui!",
-            "link": "https://docs.google.com/forms/d/e/1FAIpQLScoeFTClfOWnAXR0MiLIQfFF73rjZ5GswuaAEJ_siqaw3YYOg/viewform",
+            "link": "https://forms.gle/zU6DnzGXuUrK6yJv7",
             "imagen": "logo_dc_full.png",
             "clase": "fa fa-play-circle"
         },
         {
-            "nombre": "uct.confesiones",
-            "link": "https://www.instagram.com/uct.confesiones/",
+            "nombre": "uct.confes",
+            "link": "https://www.instagram.com/uct.confes/",
+            "imagen": "logo_sin_fondo.png",
+            "clase": "fab fa-instagram"
+        },
+        {
+            "nombre": "uctconfes (Respaldo)",
+            "link": "https://www.instagram.com/uctconfes/",
             "imagen": "logo_sin_fondo.png",
             "clase": "fab fa-instagram"
         },
